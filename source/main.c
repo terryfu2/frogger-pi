@@ -2,6 +2,8 @@
 #include "snes.h"
 #include "framebuffer.h"
 
+#include <stdio.h>
+
 int main() {
 
     initSNES();
