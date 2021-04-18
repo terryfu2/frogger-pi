@@ -1,12 +1,13 @@
-#include "initGPIO.h"
 #include "snes.h"
-#include "framebuffer.h"
+#include "screen.h"
 
 #include <stdio.h>
 
 int main() {
 
     initSNES();
+
+    initScreen();
 
     while(!getShouldClose()) {
         Read_Snes();
