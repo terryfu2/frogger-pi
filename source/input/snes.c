@@ -138,11 +138,8 @@ void Print_Message() {
     }
 }
 
-int main()
-{
-    printf("Created by: Terry Fu and Matthew Low\n\n");
-
-	// get gpio pointer
+void initSNES() {
+    // get gpio pointer
     unsigned int *gpioPtr = getGPIOPtr(); 
     
     //set base
@@ -152,16 +149,36 @@ int main()
     Init_GPIO(CLK, 1);
     Init_GPIO(LAT, 1);
     Init_GPIO(DAT, 0);
-
-    printf("Please press a button...\n\n");
-    
-    while(!shouldClose) {
-        Read_Snes();
-        Print_Message();
-    }
-    
-    printf("Exiting program\n");
-    Wait(2000000);
-    
-    return 0;
 }
+
+int getShouldClose() {
+    return shouldClose;
+}
+
+// int main()
+// {
+//     printf("Created by: Terry Fu and Matthew Low\n\n");
+
+// 	// get gpio pointer
+//     unsigned int *gpioPtr = getGPIOPtr(); 
+    
+//     //set base
+//     base = gpioPtr;
+    
+//     //initialize SNES
+//     Init_GPIO(CLK, 1);
+//     Init_GPIO(LAT, 1);
+//     Init_GPIO(DAT, 0);
+
+//     printf("Please press a button...\n\n");
+    
+//     while(!shouldClose) {
+//         Read_Snes();
+//         Print_Message();
+//     }
+    
+//     printf("Exiting program\n");
+//     Wait(2000000);
+    
+//     return 0;
+// }
