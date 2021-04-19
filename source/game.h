@@ -1,8 +1,13 @@
+#pragma once
+
+#include "object.h"
+
 
 typedef struct {
     // instance of game map
  
     // positions of all objects, including frog
+    GameObj objects[20];
 
     // score
     int score;
@@ -22,4 +27,5 @@ typedef struct {
     // lose condition flag
     int loseFlag;
     
-}gameState;
+}GameState;
+

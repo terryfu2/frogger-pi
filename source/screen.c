@@ -2,10 +2,12 @@
 #include <sys/mman.h>
 #include "screen.h"
 #include "framebuffer.h"
+#include "game.h"
+#include "images.h"
 
 struct fbs framebufferstruct;
 
-screenDim screen;
+ScreenDim screen;
 
 void initScreen(int width, int height) {
     screen.width = width;
@@ -46,6 +48,27 @@ void drawScreen() {
     pixel = NULL;
     munmap(framebufferstruct.fptr, framebufferstruct.screenSize);
 }
+
+void drawObjects(GameState state, Pixel *pix) {
+
+    for(int i = 0; i < sizeof(state.objects)/sizeof(state.objects[0]); i++) {
+        int *imagePtr = (int *) frogFront.image_pixels;
+        int j = 0;
+
+        for(int y = 0; y < state.objects[i].yPos; y++) {
+            for(int x = 0; x < state.objects[i].xPos; x++) {
+                
+
+                pix->color = imagePtr[j];
+                pix->x = x;
+                pix->y = y;
+                j++;
+
+            }
+        }
+    }
+}
+
 
 void drawPixel(Pixel *pixel){
 	long int location = (pixel->x +framebufferstruct.xOff) * (framebufferstruct.bits/8) +

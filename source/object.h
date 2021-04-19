@@ -1,4 +1,6 @@
+#pragma once
 
+#include "images.h"
 
 typedef struct {
     int xPos, yPos;
@@ -6,4 +8,5 @@ typedef struct {
     int xVel, yVel;
 
     int xAcc, yAcc;
-}gameObj;
+
+}GameObj;

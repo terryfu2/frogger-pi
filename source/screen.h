@@ -8,7 +8,7 @@ typedef struct {
 typedef struct {
     int width;
     int height;
-}screenDim;
+}ScreenDim;
 
 void initScreen(int width, int height);
 
