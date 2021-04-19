@@ -6,12 +6,12 @@
 int main() {
 
     initSNES();
-
-    initScreen();
+    initScreen(720, 720);
 
     while(!getShouldClose()) {
         Read_Snes();
         Print_Message();
+        drawScreen();
     }
 
     printf("Exiting program\n");

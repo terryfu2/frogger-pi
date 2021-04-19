@@ -5,6 +5,13 @@ typedef struct {
     int x, y;
 }Pixel;
 
-void initScreen();
+typedef struct {
+    int width;
+    int height;
+}screenDim;
+
+void initScreen(int width, int height);
+
+void drawScreen();
 
 void drawPixel(Pixel *pixel);
