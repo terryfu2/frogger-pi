@@ -5,12 +5,19 @@
 
 int main() {
 
+    // initialize input
     initSNES();
-    initScreen(720, 720);
+
+    // initialize screen size
+    initScreen(1280, 720);
 
     while(!getShouldClose()) {
+
+        // input
         Read_Snes();
         Print_Message();
+
+        // update screen
         drawScreen();
     }
 
