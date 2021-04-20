@@ -1,18 +1,17 @@
 #include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 #include <sys/mman.h>
 #include "screen.h"
 #include "framebuffer.h"
 #include "game.h"
-#include "images.h"
+
+#define WIDTH 1280
+#define HEIGHT 720
 
 struct fbs framebufferstruct;
 
-ScreenDim screen;
-
-void initScreen(int width, int height) {
-    screen.width = width;
-    screen.height = height;
-}
+int screenImage[WIDTH][HEIGHT];
 
 void drawScreen() {
 
@@ -21,24 +20,14 @@ void drawScreen() {
     Pixel *pixel;
     pixel = malloc(sizeof(Pixel));
 
-    for (int y = 0; y < screen.height; y++) {
-        for (int x = 0; x < screen.width; x++) {
-            if(y == 0 || x == 0) {
-                pixel->color = 0xF800;  //red for borders
-                pixel->x = x;
-                pixel->y = y;
+    drawBackground();
+    drawFrog(getGameState());
 
-            }else if(y == screen.height - 1 || x == screen.width - 1) {
-                pixel->color = 0xF800;  //red for borders
-                pixel->x = x;
-                pixel->y = y;
-
-            }else {
-                pixel->color = 0x0; 
-                pixel->x = x;
-                pixel->y = y;
-
-            }
+    for (int y = 0; y < HEIGHT; y++) {
+        for (int x = 0; x < WIDTH; x++) {
+            pixel->color = screenImage[x][y];
+            pixel->x = x;
+            pixel->y = y;
 
             drawPixel(pixel);
         }
@@ -49,22 +38,58 @@ void drawScreen() {
     munmap(framebufferstruct.fptr, framebufferstruct.screenSize);
 }
 
-void drawObjects(GameState state, Pixel *pix) {
+void drawBackground() {
+    for(int y = 0; y < HEIGHT; y++) {
+        for(int x = 0; x < WIDTH; x++) {
 
-    for(int i = 0; i < sizeof(state.objects)/sizeof(state.objects[0]); i++) {
-        int *imagePtr = (int *) frogFront.image_pixels;
-        int j = 0;
+            if(y == 0 || x == 0) {
+                screenImage[x][y] = 0xF800; //red for border
 
-        for(int y = 0; y < state.objects[i].yPos; y++) {
-            for(int x = 0; x < state.objects[i].xPos; x++) {
-                
+            }else if(y == HEIGHT - 1 || x == WIDTH - 1) {
+                screenImage[x][y] = 0xF800; //red for border
 
-                pix->color = imagePtr[j];
-                pix->x = x;
-                pix->y = y;
-                j++;
+            }else {
+                screenImage[x][y] = 0x0;
 
             }
+        }
+    }
+}
+
+void drawObjects(GameState state) {
+
+    for(int i = 1; i < sizeof(state.objects)/sizeof(state.objects[0]); i++) {   //starts at index 1 because 0 is the frog
+        //pointer to current object sprite
+        int *imagePtr = (int *) state.objects[i].sprite.image_pixels;
+
+        int j = 0;
+
+        for(int y = state.objects[i].yPos; y < state.objects[i].sprite.height; y++) {
+            for(int x = state.objects[i].xPos; x < state.objects[i].sprite.width; x++) {
+                
+                //assign color value to corresponding pixel
+                screenImage[x][y] = imagePtr[j];
+                j++;
+            }
+        }
+    }
+}
+
+void drawFrog(GameState state) {
+
+    //pointer to current object sprite (frog)
+    int *imagePtr = (int *) state.objects[0].sprite.image_pixels;
+
+    int j = 0;
+
+    for(int y = state.objects[0].yPos; y < state.objects[0].sprite.height; y++) {
+        for(int x = state.objects[0].xPos; x < state.objects[0].sprite.height; y++) {
+
+            //assign color value to corresponding pixel
+            printf(imagePtr[j]);
+            screenImage[x][y] = imagePtr[j];
+            j++;
+
         }
     }
 }

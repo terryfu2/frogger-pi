@@ -7,7 +7,7 @@ typedef struct {
     // instance of game map
  
     // positions of all objects, including frog
-    GameObj objects[20];
+    GameObj objects[1];
 
     // score
     int score;
@@ -29,3 +29,10 @@ typedef struct {
     
 }GameState;
 
+GameState getGameState();
+
+void resetGameState();
+
+void setObject(GameObj object, int index);
+
+void newGame();

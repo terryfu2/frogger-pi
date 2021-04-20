@@ -1,4 +1,5 @@
 #pragma once
+#include "game.h"
 
 typedef struct {
     int color;
@@ -10,8 +11,12 @@ typedef struct {
     int height;
 }ScreenDim;
 
-void initScreen(int width, int height);
-
 void drawScreen();
+
+void drawBackground();
+
+void drawObjects(GameState state);
+
+void drawFrog(GameState state);
 
 void drawPixel(Pixel *pixel);

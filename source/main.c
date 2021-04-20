@@ -1,5 +1,6 @@
 #include "snes.h"
 #include "screen.h"
+#include "game.h"
 
 #include <stdio.h>
 
@@ -8,8 +9,8 @@ int main() {
     // initialize input
     initSNES();
 
-    // initialize screen size
-    initScreen(1280, 720);
+    //start game
+    newGame();
 
     while(!getShouldClose()) {
 

@@ -9,4 +9,8 @@ typedef struct {
 
     int xAcc, yAcc;
 
+    image sprite;
+
 }GameObj;
+
+GameObj newFrog();
