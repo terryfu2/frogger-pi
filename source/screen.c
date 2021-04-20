@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <stdio.h>
 #include <string.h>
 #include <sys/mman.h>
 #include "screen.h"
@@ -82,11 +81,10 @@ void drawFrog(GameState state) {
 
     int j = 0;
 
-    for(int y = state.objects[0].yPos; y < state.objects[0].sprite.height; y++) {
-        for(int x = state.objects[0].xPos; x < state.objects[0].sprite.height; y++) {
+    for(int y = state.objects[0].yPos; y < state.objects[0].yPos + state.objects[0].sprite.height; y++) {
+        for(int x = state.objects[0].xPos; x < state.objects[0].xPos + state.objects[0].sprite.height; y++) {
 
             //assign color value to corresponding pixel
-            printf(imagePtr[j]);
             screenImage[x][y] = imagePtr[j];
             j++;
 
