@@ -4,7 +4,7 @@
 typedef struct{
   unsigned int		width;
   unsigned int		height;
-  unsigned char		image_pixels[32 * 32 * 4 + 1];
+  unsigned char		image_pixels[200 * 75 * 4 + 1];
 }button;
 
 

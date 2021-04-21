@@ -15,7 +15,7 @@ void drawScreen();
 
 void drawMenu();
 
-void drawButton();
+void drawStartButton();
 
 void drawBackground();
 
