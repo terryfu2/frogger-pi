@@ -22,3 +22,4 @@ GameObj newFrog() {
 
     return frog;
 }
+

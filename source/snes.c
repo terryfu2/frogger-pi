@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <string.h>
 #include "initGPIO.h"
+#include "object.h"
+#include "game.h"
 
 //SNES offsets
 #define CLK 11
@@ -144,9 +146,9 @@ void readButton(){
         }
     }
 }
-void readGame() {
+void readGame(GameState state) {
     int i;
-        
+ 
     for(i = 0; i <= sizeof(buttons); i++) {
         if(buttons[i] == 0) {
             switch(i) {
@@ -167,20 +169,24 @@ void readGame() {
                     shouldClose = 1;
                     break;
                 case 4:
-                    printf("You have pressed Joy-pad UP\n\n");
+                    printf("%d",state.objects[0].xPos);
                     printf("Please press a button...\n\n");
+                    setFrogX(state,-32);
                     break;
                 case 5:
-                    printf("You have pressed Joy-pad DOWN\n\n");
+                    printf("You have pressed Joy-pad asdfDOWN\n\n");
                     printf("Please press a button...\n\n");
+                    state.objects[0].xPos += 32;
                     break;
                 case 6:
-                    printf("You have pressed Joy-pad LEFT\n\n");
+                    printf("You have pressed Joy-pad asdfLEFT\n\n");
                     printf("Please press a button...\n\n");
+                    state.objects[0].yPos -= 32;
                     break;
                 case 7:
-                    printf("You have pressed Joy-pad RIGHT\n\n");
+                    printf("You have pressed Joy-pad asdfRIGHT\n\n");
                     printf("Please press a button...\n\n");
+                    state.objects[0].yPos += 32;
                     break;
                 case 8:
                     printf("You have pressed A\n\n");

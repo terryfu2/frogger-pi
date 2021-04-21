@@ -47,11 +47,11 @@ int main() {
 
         // input
         Read_Snes();
-        readGame();
+        readGame(getGameState());
 
         // update screen
         drawBackground();
-        drawFrog(getGameState());
+        //drawFrog(getGameState());
         drawScreen();
     }
 

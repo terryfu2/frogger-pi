@@ -35,4 +35,6 @@ void resetGameState();
 
 void setObject(GameObj object, int index);
 
+void setFrogX(GameState game, int increment);
+
 void newGame();

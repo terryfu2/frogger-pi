@@ -26,7 +26,7 @@ void drawScreen() {
     //drawStartButton(whiteStart);
     //drawEndButton(whiteQuit);
     //drawBackground();
-    //drawFrog(getGameState());
+    drawFrog(getGameState());
 
     for (int y = 0; y < HEIGHT; y++) {
         for (int x = 0; x < WIDTH; x++) {

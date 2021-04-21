@@ -12,6 +12,8 @@ void Wait(int n);
 
 void Read_Snes();
 
+void readGame();
+
 void readButton();
 
 void Print_Message();
