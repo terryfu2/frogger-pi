@@ -169,24 +169,24 @@ void readGame(GameState state) {
                     shouldClose = 1;
                     break;
                 case 4:
-                    printf("%d",state.objects[0].xPos);
-                    printf("Please press a button...\n\n");
-                    setFrogX(state,-32);
+                    // printf("%d",state.objects[0].xPos);
+                    // printf("Please press a button...\n\n");
+                    moveFrog(0);
                     break;
                 case 5:
-                    printf("You have pressed Joy-pad asdfDOWN\n\n");
-                    printf("Please press a button...\n\n");
-                    state.objects[0].xPos += 32;
+                    // printf("You have pressed Joy-pad asdfDOWN\n\n");
+                    // printf("Please press a button...\n\n");
+                    moveFrog(1);;
                     break;
                 case 6:
-                    printf("You have pressed Joy-pad asdfLEFT\n\n");
-                    printf("Please press a button...\n\n");
-                    state.objects[0].yPos -= 32;
+                    // printf("You have pressed Joy-pad asdfLEFT\n\n");
+                    // printf("Please press a button...\n\n");
+                    moveFrog(2);;
                     break;
                 case 7:
-                    printf("You have pressed Joy-pad asdfRIGHT\n\n");
-                    printf("Please press a button...\n\n");
-                    state.objects[0].yPos += 32;
+                    // printf("You have pressed Joy-pad asdfRIGHT\n\n");
+                    // printf("Please press a button...\n\n");
+                    moveFrog(3);;
                     break;
                 case 8:
                     printf("You have pressed A\n\n");
