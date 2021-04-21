@@ -64,8 +64,14 @@ void drawObjects(GameState state) {
 
         int j = 0;
 
-        for(int y = state.objects[i].yPos; y < state.objects[i].sprite.height; y++) {
-            for(int x = state.objects[i].xPos; x < state.objects[i].sprite.width; x++) {
+        int top = state.objects[i].yPos - (state.objects[i].sprite.height / 2);
+        int bot = state.objects[i].yPos + (state.objects[i].sprite.height / 2);
+
+        int left = state.objects[i].xPos - (state.objects[i].sprite.width / 2);
+        int right = state.objects[i].xPos + (state.objects[i].sprite.width / 2);
+
+        for(int y = top; y < bot; y++) {
+            for(int x = left; x < right; x++) {
                 
                 //assign color value to corresponding pixel
                 screenImage[x][y] = imagePtr[j];
@@ -82,8 +88,14 @@ void drawFrog(GameState state) {
 
     int j = 0;
 
-    for(int y = state.objects[0].yPos; y < state.objects[0].yPos + state.objects[0].sprite.height; y++) {
-        for(int x = state.objects[0].xPos; x < state.objects[0].xPos + state.objects[0].sprite.width; x++) {
+    int top = state.objects[0].yPos - (state.objects[0].sprite.height / 2);
+    int bot = state.objects[0].yPos + (state.objects[0].sprite.height / 2);
+
+    int left = state.objects[0].xPos - (state.objects[0].sprite.width / 2);
+    int right = state.objects[0].xPos + (state.objects[0].sprite.width / 2);
+
+    for(int y = top; y < bot; y++) {
+        for(int x = left; x < right; x++) {
 
             //assign color value to corresponding pixel
             screenImage[x][y] = imagePtr[j];
