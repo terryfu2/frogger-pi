@@ -1,5 +1,4 @@
 #include "game.h"
-#include "object.h"
 
 GameState game;
 
@@ -51,6 +50,6 @@ void newGame() {
     resetGameState();
 
     //add frog
-    setObject(newFrog(), 0);
+    setObject(newFrog(map.grid[5][6]), 0);
 
 }

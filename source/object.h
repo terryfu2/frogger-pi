@@ -2,6 +2,15 @@
 
 #include "images.h"
 
+typedef struct ScreenCoord{
+    //x pixel
+    int x;
+
+    //y pixel
+    int y;
+
+}ScreenCoord;
+
 typedef struct {
     int xPos, yPos;
 
@@ -13,4 +22,4 @@ typedef struct {
 
 }GameObj;
 
-GameObj newFrog();
+GameObj newFrog(ScreenCoord coord);

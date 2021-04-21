@@ -2,15 +2,6 @@
 
 #include "object.h"
 
-typedef struct{
-    //x pixel
-    int x;
-
-    //y pixel
-    int y;
-
-}ScreenCoord;
-
 typedef struct {
     //grid of 32x32 cells
     ScreenCoord grid[39][22];
