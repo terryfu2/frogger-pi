@@ -20,6 +20,7 @@ void drawScreen() {
     pixel = malloc(sizeof(Pixel));
 
     drawBackground();
+    drawGrid();
     drawFrog(getGameState());
 
     for (int y = 0; y < HEIGHT; y++) {
@@ -87,6 +88,16 @@ void drawFrog(GameState state) {
             //assign color value to corresponding pixel
             screenImage[x][y] = imagePtr[j];
             j++;
+
+        }
+    }
+}
+
+void drawGrid() {
+    for(int y = 0; y < HEIGHT; y += 32) {
+        for(int x = 0; x < WIDTH; x += 32) {
+
+            screenImage[x][y] = 0xF800;
 
         }
     }

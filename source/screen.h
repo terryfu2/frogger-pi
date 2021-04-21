@@ -19,4 +19,6 @@ void drawObjects(GameState state);
 
 void drawFrog(GameState state);
 
+void drawGrid();
+
 void drawPixel(Pixel *pixel);
