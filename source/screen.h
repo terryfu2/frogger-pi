@@ -13,6 +13,8 @@ typedef struct {
 
 void drawScreen();
 
+void drawMenu();
+
 void drawBackground();
 
 void drawObjects(GameState state);
