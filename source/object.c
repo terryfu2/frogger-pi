@@ -1,6 +1,5 @@
 #include "object.h"
 
-struct ScreenCoord;
 
 void updateObject() {
 
@@ -14,11 +13,11 @@ void initObject() {
     
 }
 
-GameObj newFrog(ScreenCoord coord) {
+GameObj newFrog(int x , int y) {
     GameObj frog;
 
-    frog.xPos = coord.x;
-    frog.yPos = coord.y;
+    frog.xPos = x * 32;
+    frog.yPos = y * 32;
 
     frog.sprite = frogFront;
 

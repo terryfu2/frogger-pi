@@ -22,4 +22,4 @@ typedef struct {
 
 }GameObj;
 
-GameObj newFrog(ScreenCoord coord);
+GameObj newFrog(int x, int y);

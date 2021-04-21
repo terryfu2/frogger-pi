@@ -50,6 +50,6 @@ void newGame() {
     resetGameState();
 
     //add frog
-    setObject(newFrog(map.grid[5][6]), 0);
+    setObject(newFrog(20, 22), 0);
 
 }
