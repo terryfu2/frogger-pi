@@ -23,6 +23,7 @@ void drawScreen() {
 
     drawMenu();
     drawStartButton(whiteStart);
+    drawStartButton(blackStart);
     //drawBackground();
     //drawFrog(getGameState());
 
