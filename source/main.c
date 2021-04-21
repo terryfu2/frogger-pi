@@ -1,8 +1,13 @@
 #include "snes.h"
 #include "screen.h"
 #include "game.h"
+#include "menuimg.h"
+#include "buttons.h"
+
 
 #include <stdio.h>
+
+
 
 int main() {
 
@@ -12,13 +17,41 @@ int main() {
     //start game
     newGame();
 
-    while(!getShouldClose()) {
+    //draw menu and allow user movement
+    drawMenu();
+    int up;
+    while(getA() != 1){
+        up = getUp();
+
+        if(up == 1){
+            drawStartButton(whiteStart);
+            drawEndButton(blackQuit);
+
+        }
+        else{
+            drawStartButton(blackStart);
+            drawEndButton(whiteQuit);
+
+        }
+       
+        Read_Snes();
+        readButton();
+        drawScreen();
+    }
+    int gameloop = 1;
+    if(up == 1){
+        gameloop = 0;
+    }
+    
+    while(gameloop == 0) {
 
         // input
         Read_Snes();
-        Print_Message();
+        readGame(getGameState());
 
         // update screen
+        drawBackground();
+        //drawFrog(getGameState());
         drawScreen();
     }
 

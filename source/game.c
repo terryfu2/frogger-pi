@@ -1,4 +1,6 @@
 #include "game.h"
+#include "object.h"
+#include <stdio.h>
 
 GameState game;
 
@@ -41,7 +43,10 @@ void setGameMap() {
 void setObject(GameObj object, int index) {
     game.objects[index] = object;
 }
-
+void setFrogX(GameState game, int increment){
+    printf("%d",game.objects[0].xPos);
+    game.objects[0].xPos =  game.objects[0].xPos+ increment;
+}
 void newGame() {
     //initialize the map
     setGameMap();

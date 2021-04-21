@@ -12,8 +12,18 @@ void Wait(int n);
 
 void Read_Snes();
 
+void readGame();
+
+void readButton();
+
 void Print_Message();
 
 void initSNES();
 
 int getShouldClose();
+
+int getA();
+
+int getUp();
+
+int getDown();

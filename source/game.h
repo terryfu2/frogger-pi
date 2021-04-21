@@ -43,4 +43,6 @@ void setGameMap();
 
 void setObject(GameObj object, int index);
 
+void setFrogX(GameState game, int increment);
+
 void newGame();

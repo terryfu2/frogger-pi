@@ -4,6 +4,9 @@
 #include "screen.h"
 #include "framebuffer.h"
 #include "game.h"
+#include "menuimg.h"
+#include "buttons.h"
+
 
 #define WIDTH 1280
 #define HEIGHT 720
@@ -19,8 +22,10 @@ void drawScreen() {
     Pixel *pixel;
     pixel = malloc(sizeof(Pixel));
 
-    drawBackground();
-    drawGrid();
+    //drawMenu();
+    //drawStartButton(whiteStart);
+    //drawEndButton(whiteQuit);
+    //drawBackground();
     drawFrog(getGameState());
 
     for (int y = 0; y < HEIGHT; y++) {
@@ -37,7 +42,59 @@ void drawScreen() {
     pixel = NULL;
     munmap(framebufferstruct.fptr, framebufferstruct.screenSize);
 }
+void drawMenu(){
+   int *imagePtr = (int *) startMenu.image_pixels;
 
+    int j = 0;
+
+    for(int y = 0; y < startMenu.height; y++) {
+        for(int x = 0; x < startMenu.width; x++) {
+
+            //assign color value to corresponding pixel
+            screenImage[x][y] = imagePtr[j];
+            j++;
+            if(y == 0 || x == 0) {
+                screenImage[x][y] = 0xF800; //red for border
+
+            }else if(y == HEIGHT - 1 || x == WIDTH - 1) {
+                screenImage[x][y] = 0xF800; //red for border
+
+            }
+
+        }
+    }
+
+}
+void drawStartButton(button currentButton){
+    int *imagePtr = (int *) currentButton.image_pixels;
+
+    int j = 0;
+
+    for(int y = 450; y < currentButton.height + 450; y++) {
+        for(int x = 540; x < currentButton.width + 540; x++) {
+
+            //assign color value to corresponding pixel
+            screenImage[x][y] = imagePtr[j];
+            j++;
+
+        }
+    }
+}
+void drawEndButton(button currentButton){
+    int *imagePtr = (int *) currentButton.image_pixels;
+
+    int j = 0;
+
+    for(int y = 550; y < currentButton.height + 550; y++) {
+        for(int x = 540; x < currentButton.width + 540; x++) {
+
+            //assign color value to corresponding pixel
+            screenImage[x][y] = imagePtr[j];
+            j++;
+
+        }
+    }
+}
 void drawBackground() {
     for(int y = 0; y < HEIGHT; y++) {
         for(int x = 0; x < WIDTH; x++) {
