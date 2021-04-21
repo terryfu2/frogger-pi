@@ -4,8 +4,6 @@
 
 GameState game;
 
-GameMap map;
-
 GameState getGameState() {
     return game;
 }
