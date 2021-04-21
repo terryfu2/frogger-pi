@@ -27,3 +27,5 @@ int getA();
 int getUp();
 
 int getDown();
+
+int getStart();

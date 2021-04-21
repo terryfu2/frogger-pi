@@ -6,6 +6,7 @@
 #include "game.h"
 #include "menuimg.h"
 #include "buttons.h"
+#include "halfscreens.h"
 
 
 #define WIDTH 1280
@@ -61,6 +62,21 @@ void drawMenu(){
 
             }
 
+        }
+    }
+
+}
+void drawHalf(){
+   int *imagePtr = (int *) gamePaused.image_pixels;
+
+    int j = 0;
+
+    for(int y = 200; y < gamePaused.height; y++) {
+        for(int x = 300; x < gamePaused.width; x++) {
+
+            //assign color value to corresponding pixel
+            screenImage[x][y] = imagePtr[j];
+            j++;
         }
     }
 

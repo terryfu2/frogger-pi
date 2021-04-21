@@ -48,7 +48,9 @@ int main() {
         // input
         Read_Snes();
         readGame(getGameState());
-
+        if(getStart() == 1){
+            drawHalf();
+        }
         // update screen
         drawBackground();
         drawGrid();

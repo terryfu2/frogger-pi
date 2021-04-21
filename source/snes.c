@@ -5,6 +5,7 @@
 #include "object.h"
 #include "game.h"
 
+
 //SNES offsets
 #define CLK 11
 #define LAT 9
@@ -29,6 +30,7 @@ int shouldClose = 0;
 int upPressed = 1;
 int downPressed = 0;
 int pressedA = 0;
+int pressedStart = 0;
 
 
 void Init_GPIO(int line, int func) {
@@ -167,6 +169,7 @@ void readGame(GameState state) {
                 case 3:
                     printf("You have pressed Start\n\n");
                     shouldClose = 1;
+                    pressedStart = 1;
                     break;
                 case 4:
                     // printf("%d",state.objects[0].xPos);
@@ -291,6 +294,9 @@ int getUp(){
 }
 int getDown(){
     return downPressed;
+}
+int getStart(){
+    return pressedStart;
 }
 // int main()
 // {
