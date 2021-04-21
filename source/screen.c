@@ -58,7 +58,7 @@ void drawBackground() {
 
 void drawObjects(GameState state) {
 
-    for(int i = 1; i < sizeof(state.objects)/sizeof(state.objects[0]); i++) {   //starts at index 1 because 0 is the frog
+    for(int i = 1; i < sizeof(state.objects) / sizeof(state.objects[0]); i++) {   //starts at index 1 because 0 is the frog
         //pointer to current object sprite
         int *imagePtr = (int *) state.objects[i].sprite.image_pixels;
 

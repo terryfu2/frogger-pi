@@ -2,9 +2,24 @@
 
 #include "object.h"
 
+typedef struct{
+    //x pixel
+    int x;
+
+    //y pixel
+    int y;
+
+}ScreenCoord;
+
+typedef struct {
+    //grid of 32x32 cells
+    ScreenCoord grid[39][22];
+
+}GameMap;
 
 typedef struct {
     // instance of game map
+    GameMap map;
  
     // positions of all objects, including frog
     GameObj objects[1];
@@ -32,6 +47,8 @@ typedef struct {
 GameState getGameState();
 
 void resetGameState();
+
+void setGameMap();
 
 void setObject(GameObj object, int index);
 
