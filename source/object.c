@@ -19,6 +19,9 @@ GameObj newFrog(int x , int y) {
     frog.xPos = x * 32;
     frog.yPos = y * 32;
 
+    frog.xVel = 32;
+    frog.yVel = 32;
+
     frog.sprite = frogFront;
 
     return frog;
