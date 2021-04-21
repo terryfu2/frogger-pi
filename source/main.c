@@ -51,7 +51,8 @@ int main() {
 
         // update screen
         drawBackground();
-        //drawFrog(getGameState());
+        drawGrid();
+        drawFrog(getGameState());
         drawScreen();
     }
 
