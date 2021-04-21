@@ -90,57 +90,57 @@ void readButton(){
         if(buttons[i] == 0) {
             switch(i) {
                 case 0:
-                    printf("You have pressed B\n\n");
-                    printf("Please press a button...\n\n");
+                    //printf("You have pressed B\n\n");
+                    //printf("Please press a button...\n\n");
                     break;
                 case 1:
-                    printf("You have pressed Y\n\n");
-                    printf("Please press a button...\n\n");
+                   // printf("You have pressed Y\n\n");
+                    //printf("Please press a button...\n\n");
                     break;
                 case 2:
-                    printf("You have pressed Select\n\n");
-                    printf("Please press a button...\n\n");
+                    //printf("You have pressed Select\n\n");
+                    //printf("Please press a button...\n\n");
                     break;
                 case 3:
-                    printf("You have pressed Start\n\n");
+                    //printf("You have pressed Start\n\n");
                     shouldClose = 1;
                     break;
                 case 4:
-                    printf("You have pressed Joy-pad UP\n\n");
-                    printf("Please press a button...\n\n");
+                    //printf("You have pressed Joy-pad UP\n\n");
+                    //printf("Please press a button...\n\n");
                     upPressed = 1;
                     downPressed = 0;
                     break;
                 case 5:
-                    printf("You have pressed Joy-pad DOWN\n\n");
-                    printf("Please press a button...\n\n");
+                    //printf("You have pressed Joy-pad DOWN\n\n");
+                    //printf("Please press a button...\n\n");
                     downPressed = 1;
                     upPressed = 0;
                     break;
                 case 6:
-                    printf("You have pressed Joy-pad LEFT\n\n");
-                    printf("Please press a button...\n\n");
+                   // printf("You have pressed Joy-pad LEFT\n\n");
+                   // printf("Please press a button...\n\n");
                     break;
                 case 7:
-                    printf("You have pressed Joy-pad RIGHT\n\n");
-                    printf("Please press a button...\n\n");
+                    //printf("You have pressed Joy-pad RIGHT\n\n");
+                    //printf("Please press a button...\n\n");
                     break;
                 case 8:
-                    printf("You have pressed A\n\n");
-                    printf("Please press a button...\n\n");
+                    //printf("You have pressed A\n\n");
+                   // printf("Please press a button...\n\n");
                     pressedA = 1;
                     break;
                 case 9:
-                    printf("You have pressed X\n\n");
-                    printf("Please press a button...\n\n");
+                    //printf("You have pressed X\n\n");
+                    //printf("Please press a button...\n\n");
                     break;
                 case 10:
-                    printf("You have pressed Left\n\n");
-                    printf("Please press a button...\n\n");
+                   // printf("You have pressed Left\n\n");
+                   // printf("Please press a button...\n\n");
                     break;
                 case 11:
-                    printf("You have pressed Right\n\n");
-                    printf("Please press a button...\n\n");
+                    //printf("You have pressed Right\n\n");
+                    //printf("Please press a button...\n\n");
                     break;
             }
         }

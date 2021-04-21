@@ -39,8 +39,6 @@ int main() {
     int gameloop = 1;
     if(up == 1){
         gameloop = 0;
-        printf("yes");
-
     }
     
     while(gameloop == 0) {
