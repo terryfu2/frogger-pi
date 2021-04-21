@@ -5,7 +5,6 @@
 #include "screen.h"
 #include "framebuffer.h"
 #include "game.h"
-#include "bgimages.h"
 
 #define WIDTH 1280
 #define HEIGHT 720
@@ -20,10 +19,9 @@ void drawScreen() {
 
     Pixel *pixel;
     pixel = malloc(sizeof(Pixel));
-    drawMenu();
 
-    //drawBackground();
-    //drawFrog(getGameState());
+    drawBackground();
+    drawFrog(getGameState());
 
     for (int y = 0; y < HEIGHT; y++) {
         for (int x = 0; x < WIDTH; x++) {
@@ -39,21 +37,7 @@ void drawScreen() {
     pixel = NULL;
     munmap(framebufferstruct.fptr, framebufferstruct.screenSize);
 }
-void drawMenu(){
-    int *imagePtr = (int *) startMenu.image_pixels;
 
-    int j = 0;
-
-    for(int y = 0; y < 720; y++) {
-        for(int x = 0; x < 1080; x++) {
-
-            //assign color value to corresponding pixel
-            screenImage[x][y] = imagePtr[j];
-            j++;
-
-        }
-    }
-}
 void drawBackground() {
     for(int y = 0; y < HEIGHT; y++) {
         for(int x = 0; x < WIDTH; x++) {
