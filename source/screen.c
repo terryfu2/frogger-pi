@@ -20,10 +20,10 @@ void drawScreen() {
 
     Pixel *pixel;
     pixel = malloc(sizeof(Pixel));
-    //drawMenu();
+    drawMenu();
 
-    drawBackground();
-    drawFrog(getGameState());
+    //drawBackground();
+    //drawFrog(getGameState());
 
     for (int y = 0; y < HEIGHT; y++) {
         for (int x = 0; x < WIDTH; x++) {
@@ -39,7 +39,6 @@ void drawScreen() {
     pixel = NULL;
     munmap(framebufferstruct.fptr, framebufferstruct.screenSize);
 }
-/*
 void drawMenu(){
     int *imagePtr = (int *) startMenu.image_pixels;
 
@@ -54,7 +53,7 @@ void drawMenu(){
 
         }
     }
-}*/
+}
 void drawBackground() {
     for(int y = 0; y < HEIGHT; y++) {
         for(int x = 0; x < WIDTH; x++) {
