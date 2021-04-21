@@ -26,14 +26,12 @@ int main() {
         if(up == 1){
             drawStartButton(whiteStart);
             drawEndButton(blackQuit);
-            Wait(2000);
-            drawStartButton(blackStart);
+
         }
         else{
             drawStartButton(blackStart);
             drawEndButton(whiteQuit);
-            Wait(2000);
-            drawStartButton(blackQuit);
+
         }
        
         Read_Snes();
