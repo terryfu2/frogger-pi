@@ -21,9 +21,9 @@ void drawScreen() {
     Pixel *pixel;
     pixel = malloc(sizeof(Pixel));
 
-    drawMenu();
-    drawStartButton(whiteStart);
-    drawStartButton(blackStart);
+    //drawMenu();
+    //drawStartButton(whiteStart);
+    //drawEndButton(whiteQuit);
     //drawBackground();
     //drawFrog(getGameState());
 
@@ -69,8 +69,23 @@ void drawStartButton(button currentButton){
 
     int j = 0;
 
-    for(int y = 570; y < currentButton.height + 570; y++) {
-        for(int x = 350; x < currentButton.width + 350; x++) {
+    for(int y = 450; y < currentButton.height + 450; y++) {
+        for(int x = 540; x < currentButton.width + 540; x++) {
+
+            //assign color value to corresponding pixel
+            screenImage[x][y] = imagePtr[j];
+            j++;
+
+        }
+    }
+}
+void drawEndButton(button currentButton){
+    int *imagePtr = (int *) currentButton.image_pixels;
+
+    int j = 0;
+
+    for(int y = 550; y < currentButton.height + 550; y++) {
+        for(int x = 540; x < currentButton.width + 540; x++) {
 
             //assign color value to corresponding pixel
             screenImage[x][y] = imagePtr[j];

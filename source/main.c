@@ -1,6 +1,8 @@
 #include "snes.h"
 #include "screen.h"
 #include "game.h"
+#include "menuimg.h"
+#include "buttons.h"
 
 #include <stdio.h>
 
@@ -11,7 +13,10 @@ int main() {
 
     //start game
     newGame();
-
+    
+    drawMenu();
+    drawStartButton(whiteStart);
+    drawEndButton(whiteQuit);
     while(!getShouldClose()) {
 
         // input

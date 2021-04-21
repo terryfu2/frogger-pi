@@ -17,6 +17,8 @@ void drawMenu();
 
 void drawStartButton();
 
+void drawEndButton();
+
 void drawBackground();
 
 void drawObjects(GameState state);
