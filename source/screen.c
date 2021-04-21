@@ -5,6 +5,7 @@
 #include "framebuffer.h"
 #include "game.h"
 #include "menuimg.h"
+#include "buttons.h"
 
 #define WIDTH 1280
 #define HEIGHT 720
@@ -21,6 +22,7 @@ void drawScreen() {
     pixel = malloc(sizeof(Pixel));
 
     drawMenu();
+    drawButton(whiteStart);
     //drawBackground();
     //drawFrog(getGameState());
 
@@ -53,6 +55,21 @@ void drawMenu(){
         }
     }
 
+}
+void drawButton(button whiteStart){
+    int *imagePtr = (int *) whiteStart.image_pixels;
+
+    int j = 0;
+
+    for(int y = 0; y < startMenu.height; y++) {
+        for(int x = 0; x < startMenu.width; x++) {
+
+            //assign color value to corresponding pixel
+            screenImage[x][y] = imagePtr[j];
+            j++;
+
+        }
+    }
 }
 void drawBackground() {
     for(int y = 0; y < HEIGHT; y++) {

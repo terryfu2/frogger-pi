@@ -15,6 +15,8 @@ void drawScreen();
 
 void drawMenu();
 
+void drawButton();
+
 void drawBackground();
 
 void drawObjects(GameState state);
