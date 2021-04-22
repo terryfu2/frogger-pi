@@ -92,3 +92,18 @@ GameObj newLog(int x, int y, int size, int direction) {
     return log;
 }
 
+GameObj newWater(int x, int y) {
+    GameObj wet;
+
+    wet.type = 2;
+
+    wet.xPos = x * 32;
+    wet.yPos = y * 32;
+
+    wet.size = 1;
+
+    wet.sprite = water;
+
+    return wet;
+}
+

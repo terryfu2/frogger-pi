@@ -49,7 +49,9 @@ void newGame() {
 
     setObject(newLog(20, 8, 3, 1), 2);
 
-    setObject(newCar(20, 10, 1, 0), 3);
+    // setObject(newCar(20, 10, 1, 0), 3);
+
+    setObject(newWater(20, 10), 3);
 
     setObject(newCar(20, 12, 1, 1), 4);
 
@@ -186,14 +188,14 @@ void checkCollision() {
     for(int i = 1; i < sizeof(game.objects) / sizeof(game.objects[0]); i++) {
 
         // for small size obstacles
-        if(game.objects[i].size == 1 && game.objects[i].type == 0) {
+        if(game.objects[i].size == 1 && game.objects[i].type != 1) {
             if(game.objects[i].xPos == getFrogX() && game.objects[i].yPos == getFrogY()) {
                 hitFrog();
                 continue;
             }
         }
         // for large size obstacles
-        if(game.objects[i].size == 3 && game.objects[i].type == 0) {
+        if(game.objects[i].size == 3 && game.objects[i].type != 1) {
             if((game.objects[i].xPos == getFrogX() || game.objects[i].xPos + 32 == getFrogX() || game.objects[i].xPos - 32 == getFrogX()) && game.objects[i].yPos == getFrogY()) {
                 hitFrog();
                 continue;

@@ -15,7 +15,7 @@ typedef struct ScreenCoord{
 
 typedef struct {
 
-    int type; // 0 is car, 1 is log
+    int type; // 0 is car, 1 is log, 2 is water
 
     int xPos, yPos;
 
@@ -36,3 +36,5 @@ GameObj newFrog(int x, int y);
 GameObj newCar(int x, int y, int size, int direction);
 
 GameObj newLog(int x, int y, int size, int direction);
+
+GameObj newWater(int x, int y);
