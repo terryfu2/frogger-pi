@@ -16,6 +16,8 @@ void readGame();
 
 void readButton();
 
+void readPause();
+
 void Print_Message();
 
 void initSNES();
@@ -31,3 +33,11 @@ int getDown();
 int getStart();
 
 int getCheck();
+
+int getPause();
+
+void resetMovement();
+
+void resetStart();
+
+void resetPause();
