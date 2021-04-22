@@ -43,3 +43,5 @@ void setObject(GameObj object, int index);
 void newGame();
 
 void moveFrog(int direction);
+
+void tickCars();

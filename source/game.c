@@ -39,13 +39,13 @@ void newGame() {
     setObject(newFrog(20, 22), 0);
 
     //add cars
-    setObject(newCar(5, 6, 3, 0), 1);
+    setObject(newCar(20, 6, 3, 0), 1);
 
-    setObject(newCar(5, 8, 3, 1), 2);
+    setObject(newCar(20, 8, 3, 1), 2);
 
-    setObject(newCar(5, 10, 1, 0), 3);
+    setObject(newCar(20, 10, 1, 0), 3);
 
-    setObject(newCar(5, 12, 1, 1), 4);
+    setObject(newCar(20, 12, 1, 1), 4);
 
 }
 
@@ -79,5 +79,39 @@ void moveFrog(int direction) {
             game.objects[0].xPos += game.objects[0].xVel;
         }
 
+    }
+}
+
+void tickCars() {
+    for(int i = 1; i < sizeof(game.objects) / sizeof(game.objects[0]); i++) {
+
+        if(game.objects[i].size == 1) {
+
+            if(game.objects[i].xPos == 39 * 32 && game.objects[i].xVel > 0) {
+
+                game.objects[i].xPos = 1 * 32;
+
+            }else if(game.objects[i].xPos == 1 * 32 && game.objects[i].xVel < 0) {
+
+                game.objects[i].xPos = 39 * 32;
+
+            }else {
+                game.objects[i].xPos += game.objects[i].xVel;
+            }
+
+        }else if(game.objects[i].size == 3) {
+
+            if(game.objects[i].xPos == 38 * 32 && game.objects[i].xVel > 0) {
+
+                game.objects[i].xPos = 2 * 32;
+
+            }else if(game.objects[i].xPos == 2 * 32 && game.objects[i].xVel < 0) {
+
+                game.objects[i].xPos = 38 * 32;
+
+            }else {
+                game.objects[i].xPos += game.objects[i].xVel;
+            }
+        }
     }
 }

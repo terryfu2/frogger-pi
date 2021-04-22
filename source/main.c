@@ -26,6 +26,9 @@ int main() {
         Read_Snes();
         readGame(getGameState());
         
+        // update objects
+        tickCars();
+
         // update screen
         drawBackground();
         drawGrid();
