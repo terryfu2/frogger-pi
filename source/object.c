@@ -1,5 +1,6 @@
 #include "object.h"
 
+//frog object
 GameObj newFrog(int x , int y) {
     GameObj frog;
 
@@ -16,6 +17,7 @@ GameObj newFrog(int x , int y) {
     return frog;
 }
 
+//car object
 GameObj newCar(int x, int y, int size, int direction) {
     GameObj car;
 
@@ -62,6 +64,7 @@ GameObj newCar(int x, int y, int size, int direction) {
     return car;
 }
 
+//log object
 GameObj newLog(int x, int y, int size, int direction) {
     GameObj log;
 

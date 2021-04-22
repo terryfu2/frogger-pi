@@ -9,6 +9,7 @@ GameState getGameState() {
     return game;
 }
 
+//reset game to base state for restart
 void resetGameState() { 
     game.score = 500;
     game.lives = 3;
@@ -19,18 +20,22 @@ void resetGameState() {
     game.isPaused = 0;
 }
 
+//set pause flag to true
 void pauseGame() {
     game.isPaused = 1;
 }
 
+//set pause flag to false
 void unpauseGame() {
     game.isPaused = 0;
 }
 
+//create object in array
 void setObject(GameObj object, int index) {
     game.objects[index] = object;
 }
 
+//create a newgame and frog
 void newGame() {
 
     //base game state
@@ -58,6 +63,7 @@ int getFrogY() {
     return game.objects[0].yPos;
 }
 
+//move frog in given direction
 void moveFrog(int direction) {
     if(!game.isPaused) {
         int up = 0;
