@@ -1,6 +1,7 @@
 #pragma once
 
 #include "images.h"
+#include "largeimages.h"
 
 
 typedef struct ScreenCoord{
@@ -23,6 +24,8 @@ typedef struct {
     int size; //how many grid spots does it take
 
     image sprite;
+
+    largeimage largeSprite;
 
 }GameObj;
 
