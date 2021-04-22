@@ -29,6 +29,7 @@ int main() {
         // update screen
         drawBackground();
         drawGrid();
+        drawObjects(getGameState());
         drawFrog(getGameState());
         //if start is pressed, open the pause menu
         if(getStart() == 1){

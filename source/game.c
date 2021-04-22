@@ -38,6 +38,15 @@ void newGame() {
     //add frog
     setObject(newFrog(20, 22), 0);
 
+    //add cars
+    setObject(newCar(5, 6, 3, 0), 1);
+
+    setObject(newCar(5, 8, 3, 1), 2);
+
+    setObject(newCar(5, 10, 1, 0), 3);
+
+    setObject(newCar(5, 12, 1, 1), 4);
+
 }
 
 void moveFrog(int direction) {

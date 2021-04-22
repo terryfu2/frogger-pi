@@ -5,7 +5,7 @@
 typedef struct {
      
     // positions of all objects, including frog
-    GameObj objects[1];
+    GameObj objects[5];
 
     // score
     int score;

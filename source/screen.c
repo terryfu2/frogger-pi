@@ -164,15 +164,41 @@ void drawObjects(GameState state) {
 
     for(int i = 1; i < sizeof(state.objects) / sizeof(state.objects[0]); i++) {   //starts at index 1 because 0 is the frog
         //pointer to current object sprite
-        int *imagePtr = (int *) state.objects[i].sprite.image_pixels;
+        int *imagePtr;
+       
+        if(state.objects[i].size == 1) {
+            // load small sprite
+            imagePtr = (int *) state.objects[i].sprite.image_pixels;
+
+        }else if(state.objects[i].size == 3) {
+            // load large sprite
+            imagePtr = (int *) state.objects[i].largeSprite.image_pixels;
+
+        }
 
         int j = 0;
 
-        int top = state.objects[i].yPos - (state.objects[i].sprite.height / 2);
-        int bot = state.objects[i].yPos + (state.objects[i].sprite.height / 2);
+        int top, bot, left, right;
 
-        int left = state.objects[i].xPos - (state.objects[i].sprite.width / 2);
-        int right = state.objects[i].xPos + (state.objects[i].sprite.width / 2);
+        // set image bounds based on size
+        if(state.objects[i].size == 1) {        // small size
+
+            top = state.objects[i].yPos - (state.objects[i].sprite.height / 2);
+            bot = state.objects[i].yPos + (state.objects[i].sprite.height / 2);
+
+            left = state.objects[i].xPos - (state.objects[i].sprite.width / 2);
+            right = state.objects[i].xPos + (state.objects[i].sprite.width / 2);
+
+        }else if(state.objects[i].size == 3) {  // large size
+
+            top = state.objects[i].yPos - (state.objects[i].largeSprite.height / 2);
+            bot = state.objects[i].yPos + (state.objects[i].largeSprite.height / 2);
+
+            left = state.objects[i].xPos - (state.objects[i].largeSprite.width / 2);
+            right = state.objects[i].xPos + (state.objects[i].largeSprite.width / 2);
+        }
+
+    
 
         for(int y = top; y < bot; y++) {
             for(int x = left; x < right; x++) {
