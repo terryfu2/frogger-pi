@@ -29,5 +29,3 @@ int getUp();
 int getDown();
 
 int getStart();
-
-int getCheck();
