@@ -1,6 +1,7 @@
 #pragma once
 #include "game.h"
 #include "halfscreens.h"
+#include "numbers.h"
 
 typedef struct {
     int color;
