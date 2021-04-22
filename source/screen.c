@@ -18,6 +18,7 @@ struct fbs framebufferstruct;
 
 int screenImage[WIDTH][HEIGHT];
 
+//update vitural screen
 void drawScreen() {
 
     framebufferstruct = initFbInfo();
@@ -45,6 +46,7 @@ void drawScreen() {
     pixel = NULL;
     munmap(framebufferstruct.fptr, framebufferstruct.screenSize);
 }
+//draws menu screen to virtual screen
 int drawMenu(){
    int *imagePtr = (int *) startMenu.image_pixels;
 
@@ -89,14 +91,15 @@ int drawMenu(){
     }
     return gameloop;
 }
-void drawHalf(){
 
-   int *imagePtr = (int *) gamePaused.image_pixels;
+void drawHalf(halfscreen screenToPrint){
+
+   int *imagePtr = (int *) screenToPrint.image_pixels;
 
     int j = 0;
 
-    for(int y = 200; y < gamePaused.height + 200; y++) {
-        for(int x = 300; x < gamePaused.width + 300; x++) {
+    for(int y = 200; y < screenToPrint.height + 200; y++) {
+        for(int x = 300; x < screenToPrint.width + 300; x++) {
 
             //assign color value to corresponding pixel
             screenImage[x][y] = imagePtr[j];
@@ -104,7 +107,7 @@ void drawHalf(){
             if(y == 200|| x == 300) {
                 screenImage[x][y] = 0xF800; //red for border
 
-            }else if(y == gamePaused.height + 200 - 1 || x == gamePaused.width + 300 - 1) {
+            }else if(y == screenToPrint.height + 200 - 1 || x == screenToPrint.width + 300 - 1) {
                 screenImage[x][y] = 0xF800; //red for border
 
             }

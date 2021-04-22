@@ -3,12 +3,13 @@
 #include "game.h"
 #include "menuimg.h"
 #include "buttons.h"
+#include "halfscreens.h"
 
 
 #include <stdio.h>
 
 
-
+//main function
 int main() {
 
     // initialize input
@@ -17,9 +18,10 @@ int main() {
     //start game
     newGame();
 
-    //draw menu and allow user input
+    //draw menu and allow user input - if gameloop == 0, play game
     int gameloop = drawMenu();
-
+    drawhalf(winScreen);
+    //game loop
     while(gameloop == 0) {
 
         // input
@@ -32,13 +34,15 @@ int main() {
         drawFrog(getGameState());
         //if start is pressed, open the pause menu
         if(getStart() == 1){
-            drawHalf();
+            drawHalf(gamePaused);
         }
         drawScreen();
     }
 
+    
     printf("Exiting program\n");
 
+    //keeps terminal open for a bit
     Wait(2000000);
 
     return 0;
