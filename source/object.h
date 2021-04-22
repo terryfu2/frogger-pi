@@ -13,14 +13,14 @@ typedef struct ScreenCoord{
 }ScreenCoord;
 
 typedef struct {
-    
-    //int size; //how many grid spots does it take
 
     int xPos, yPos;
 
     int xVel, yVel;
 
     int xAcc, yAcc;
+
+    int size; //how many grid spots does it take
 
     image sprite;
 
