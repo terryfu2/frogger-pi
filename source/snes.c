@@ -33,8 +33,6 @@ int downPressed = 0;
 int pressedA = 0;
 int pressedStart = 0;
 int check = 0;
-int pauseGame = 0;
-int movement = 0;
 
 
 void Init_GPIO(int line, int func) {
@@ -175,8 +173,12 @@ void readPause(){
                     break;
                 case 3:
                     //printf("You have pressed Start\n\n");
-
-                    pressedStart = 1;
+                    if(pressedStart == 1){
+                        pressedStart = 0;
+                    }
+                    else{
+                        pressedStart = 1;
+                    }
                     break;
                 case 4:
                     //printf("You have pressed Joy-pad UP\n\n");
@@ -226,10 +228,7 @@ void readPause(){
 }
 void readGame(GameState state) {
     int i;
-    
-    if(movement == 1){
-        return;
-    }
+ 
     for(i = 0; i <= sizeof(buttons); i++) {
         if(buttons[i] == 0) {
             switch(i) {
@@ -248,8 +247,12 @@ void readGame(GameState state) {
                 case 3:
                     //printf("You have pressed Start\n\n");
                     shouldClose = 1;
-                    pauseGame = 1;
-                    movement = 1;
+                    if(pressedStart == 1){
+                        pressedStart = 0;
+                    }
+                    else{
+                        pressedStart = 1;
+                    }
                     break;
                 case 4:
                     // printf("%d",state.objects[0].xPos);
@@ -380,18 +383,6 @@ int getStart(){
 }
 int getCheck(){
     return check;
-}
-int getPause(){
-    return pauseGame;
-}
-void resetMovement(){
-    movement = 0;
-}
-void resetStart(){
-    pressedStart = 0;
-}
-void resetPause(){
-    pauseGame = 0;
 }
 // int main()
 // {

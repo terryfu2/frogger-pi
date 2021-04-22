@@ -112,26 +112,6 @@ void drawHalf(){
     }
 
 }
-void checkPause(){
-    int count = getPause();
-    while(count == 1){
-        resetStart();
-        printf("testing");
-        drawHalf();
-         readPause();
-        drawScreen();
-        if(getStart() == 1){
-            
-            count = 0;
-            
-        }
-       
-        
-    }
-    resetMovement();
-    resetStart();
-    resetPause();
-}
 void drawStartButton(button currentButton){
     int *imagePtr = (int *) currentButton.image_pixels;
 

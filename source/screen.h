@@ -17,8 +17,6 @@ int drawMenu();
 
 void drawHalf();
 
-void checkPause();
-
 void drawStartButton();
 
 void drawEndButton();
