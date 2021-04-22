@@ -9,6 +9,7 @@
 #include "buttons.h"
 #include "halfscreens.h"
 #include "snes.h"
+#include "numbers.h"
 
 
 #define WIDTH 1280
@@ -102,7 +103,7 @@ void drawLives(int lives){
         int j = 0;
 
         for(int y = 656; y < hearts.height + 656; y++) {
-            for(int x = 32+32*i; x < hearts.width + 32+32*i; x++) {
+            for(int x = 64+32*i; x < hearts.width + 64+32*i; x++) {
 
                 //assign color value to corresponding pixel
                 screenImage[x][y] = imagePtr[j];
@@ -112,6 +113,69 @@ void drawLives(int lives){
         }
     }
 
+}
+void drawSteps(int steps){
+    int remainder = steps % 10;
+    number first = getNum(remainder);
+    int *imagePtr = (int *) first.image_pixels;
+
+    int j = 0;
+    for(int y = 656; y < first.height + 656; y++) {
+        for(int x = 320; x < first.width + 320; x++) {
+
+            //assign color value to corresponding pixel
+            screenImage[x][y] = imagePtr[j];
+            j++;
+
+        }
+    }
+    steps -= remainder;
+    remainder = steps % 100;
+    number second = getNum(remainder);
+    int *imagePtr2 = (int *) second.image_pixels;
+    j = 0;
+    for(int y = 656; y < first.height + 656; y++) {
+        for(int x = 288; x < first.width + 288; x++) {
+
+            //assign color value to corresponding pixel
+            screenImage[x][y] = imagePtr2[j];
+            j++;
+
+        }
+    }
+}
+
+number getNum(int num){
+    if(num == 0){
+        return zero;
+    }
+    if(num == 1){
+        return one;
+    }
+    if(num == 2){
+        return two;
+    }
+    if(num == 3){
+        return three;
+    }
+    if(num == 4){
+        return four;
+    }
+    if(num == 5){
+        return five;
+    }
+    if(num == 6){
+        return six;
+    }
+    if(num == 7){
+        return seven;
+    }
+    if(num == 8){
+        return eight;
+    }
+    if(num == 9){
+        return nine;
+    }
 }
 int drawHalf(halfscreen screenToPrint, int currentCheck){
 

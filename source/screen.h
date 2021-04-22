@@ -16,6 +16,12 @@ void drawScreen();
 
 int drawMenu();
 
+void drawLives(int lives);
+
+void drawSteps(int steps);
+
+number getNumber(int num);
+
 int drawHalf(halfscreen screenToPrint, int paused);
 
 void drawStartButton();

@@ -38,6 +38,7 @@ void gameLoop(int runMenu){
         drawObjects(getGameState());
         drawFrog(getGameState());
         drawLives(getGameState().lives);
+        drawSteps(getGameState().stepsLeft);
         //if start is pressed, open the pause menu
         if(getStart() == 1){
             int check = drawHalf(gamePaused,1);
