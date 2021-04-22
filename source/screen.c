@@ -70,6 +70,7 @@ int drawMenu(){
     }
     //draw buttons for the menu
     int up;
+    resetA(0);
     while(getA() != 1){
         up = getUp();
 
@@ -92,7 +93,7 @@ int drawMenu(){
     return gameloop;
 }
 
-void drawHalf(halfscreen screenToPrint){
+void drawHalf(halfscreen screenToPrint, int currentCheck){
 
    int *imagePtr = (int *) screenToPrint.image_pixels;
 
@@ -111,6 +112,41 @@ void drawHalf(halfscreen screenToPrint){
                 screenImage[x][y] = 0xF800; //red for border
 
             }
+        }
+    }
+    
+    if(currentCheck == 1){
+        printf("got");
+        //resetA();
+        //resetStart();
+        int up;
+        resetA(1);
+        while(getA() == 1 && getStart() ==1){
+            
+            Read_Snes();
+            readButton();
+            drawScreen();
+            up = getUp();
+
+            if(up == 1){
+                drawStartButton(whiteReset);
+                drawEndButton(blackQuit);
+            }
+            else{
+                drawStartButton(blackReset);
+                drawEndButton(whiteQuit);
+            }
+          
+        }
+        if(up == 0){
+            newGame();
+            gameLoop(1);
+          
+        }
+        else{
+            resetStart();
+            newGame();
+            gameLoop(0);
         }
     }
 

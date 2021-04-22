@@ -184,7 +184,9 @@ void checkLoss() {
         game.loseFlag = 1;
     }
 }
-
+void quitGame(){
+    game.loseFlag = 1;
+}
 void tickGame() {
     if(!game.isPaused) {
         tickCars();

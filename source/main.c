@@ -7,22 +7,14 @@
 
 
 #include <stdio.h>
-
-
-//main function
-int main() {
-
-    // initialize input
-    initSNES();
-
-    //start game
-    newGame();
-
-    //draw menu and allow user input - if gameloop == 0, play game
-    int gameloop = drawMenu();
-
- 
+void gameLoop(int runMenu){
+    int gameloop;
     //game loop
+    if(runMenu == 1){
+        gameloop = drawMenu();
+    }else{
+        gameloop = 0;
+    }
     while(gameloop == 0) {
 
         // if loss, exit loop
@@ -42,15 +34,57 @@ int main() {
         drawGrid();
         drawObjects(getGameState());
         drawFrog(getGameState());
-        
+         
         //if start is pressed, open the pause menu
         if(getStart() == 1){
-            drawHalf(gamePaused);
+            drawHalf(gamePaused,1);
         }
         drawScreen();
     }
-    //drawHalf(winScreen);
-    //y drawScreen();
+}
+
+//main function
+int main() {
+
+    // initialize input
+    initSNES();
+
+    //start game
+    newGame();
+
+    //draw menu and allow user input - if gameloop == 0, play game
+    
+
+    gameLoop(1);
+    //game loop
+    /*while(gameloop == 0) {
+
+        // if loss, exit loop
+        if(getGameState().loseFlag) {
+            break;
+        }
+
+        // input
+        Read_Snes();
+        readGame(getGameState());
+        
+        // update objects
+        tickGame();
+
+        // update screen
+        drawBackground();
+        drawGrid();
+        drawObjects(getGameState());
+        drawFrog(getGameState());
+         
+        //if start is pressed, open the pause menu
+        if(getStart() == 1){
+            drawHalf(gamePaused,1);
+        }
+        drawScreen();
+    }*/
+    drawHalf(lossScreen,0);
+    drawScreen();
     
     printf("Exiting program\n");
 

@@ -29,3 +29,7 @@ int getUp();
 int getDown();
 
 int getStart();
+
+void resetA(int num);
+
+void resetStart();

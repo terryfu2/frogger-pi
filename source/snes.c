@@ -107,6 +107,19 @@ void readButton(){
                 case 3:
                     //printf("You have pressed Start\n\n");
                     shouldClose = 1;
+                
+
+                    if(pressedStart == 1){
+                        pressedStart = 0;
+
+                        unpauseGame();
+                    }
+                    else{
+                        pressedStart = 1;
+
+                        pauseGame();
+                    }
+                   
                     break;
                 case 4:
                     //printf("You have pressed Joy-pad UP\n\n");
@@ -131,7 +144,9 @@ void readButton(){
                 case 8:
                     //printf("You have pressed A\n\n");
                    // printf("Please press a button...\n\n");
-                    pressedA = 1;
+                  
+                    pressedA += 1;
+                    
                     break;
                 case 9:
                     //printf("You have pressed X\n\n");
@@ -307,6 +322,12 @@ int getDown(){
 }
 int getStart(){
     return pressedStart;
+}
+void resetA(int num){
+    pressedA = num;
+}
+void resetStart(){
+    pressedStart = 0;
 }
 // int main()
 // {

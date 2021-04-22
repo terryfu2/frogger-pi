@@ -1,5 +1,6 @@
 #pragma once
 #include "game.h"
+#include "halfscreens.h"
 
 typedef struct {
     int color;
@@ -15,7 +16,7 @@ void drawScreen();
 
 int drawMenu();
 
-void drawHalf();
+void drawHalf(halfscreen screenToPrint, int paused);
 
 void drawStartButton();
 

@@ -56,4 +56,6 @@ void checkCollision();
 
 void checkLoss();
 
+void quitGame();
+
 void tickGame();
