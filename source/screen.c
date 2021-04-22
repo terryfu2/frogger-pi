@@ -8,6 +8,7 @@
 #include "menuimg.h"
 #include "buttons.h"
 #include "halfscreens.h"
+#include "snes.h"
 
 
 #define WIDTH 1280
