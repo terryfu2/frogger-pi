@@ -42,6 +42,16 @@ void setObject(GameObj object, int index);
 
 void newGame();
 
+int getFrogX();
+
+int getFrogY();
+
 void moveFrog(int direction);
 
 void tickCars();
+
+void hitFrog();
+
+void checkCollision();
+
+void tickGame();

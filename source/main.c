@@ -27,7 +27,7 @@ int main() {
         readGame(getGameState());
         
         // update objects
-        tickCars();
+        tickGame();
 
         // update screen
         drawBackground();

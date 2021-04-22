@@ -3,6 +3,7 @@
 #include <stdio.h>
 
 GameState game;
+int hit;
 
 GameState getGameState() {
     return game;
@@ -49,43 +50,57 @@ void newGame() {
 
 }
 
+int getFrogX() {
+    return game.objects[0].xPos;
+}
+
+int getFrogY() {
+    return game.objects[0].yPos;
+}
+
 void moveFrog(int direction) {
-    int up = 0;
-    int down = 1;
-    int left = 2;
-    int right = 3;
+    if(!game.isPaused) {
+        int up = 0;
+        int down = 1;
+        int left = 2;
+        int right = 3;
 
-    if(direction == up) {
+        if(direction == up) {
 
-        if(game.objects[0].yPos != 32) {
-            game.objects[0].yPos -= game.objects[0].yVel;
+            if(game.objects[0].yPos != 32) {
+                game.objects[0].yPos -= game.objects[0].yVel;
+            }
+
+        }else if(direction == down) {
+            
+            if(game.objects[0].yPos != 22 * 32) {
+                game.objects[0].yPos += game.objects[0].yVel;
+            }
+
+        }else if(direction == left) {
+
+            if(game.objects[0].xPos != 32) {
+                game.objects[0].xPos -= game.objects[0].xVel;
+            }else {
+                hitFrog();
+            }
+
+        }else if(direction == right) {
+
+            if(game.objects[0].xPos != 39 * 32) {
+                game.objects[0].xPos += game.objects[0].xVel;
+            }else {
+                hitFrog();
+            }
+
         }
-
-    }else if(direction == down) {
-        
-        if(game.objects[0].yPos != 22 * 32) {
-            game.objects[0].yPos += game.objects[0].yVel;
-        }
-
-    }else if(direction == left) {
-
-        if(game.objects[0].xPos != 32) {
-            game.objects[0].xPos -= game.objects[0].xVel;
-        }
-
-    }else if(direction == right) {
-
-        if(game.objects[0].xPos != 39 * 32) {
-            game.objects[0].xPos += game.objects[0].xVel;
-        }
-
     }
 }
 
 void tickCars() {
     for(int i = 1; i < sizeof(game.objects) / sizeof(game.objects[0]); i++) {
 
-        if(game.objects[i].size == 1) {
+        if(game.objects[i].size == 1) {     //tick small cars
 
             if(game.objects[i].xPos == 39 * 32 && game.objects[i].xVel > 0) {
 
@@ -99,7 +114,7 @@ void tickCars() {
                 game.objects[i].xPos += game.objects[i].xVel;
             }
 
-        }else if(game.objects[i].size == 3) {
+        }else if(game.objects[i].size == 3) {       //tick large cars
 
             if(game.objects[i].xPos == 38 * 32 && game.objects[i].xVel > 0) {
 
@@ -113,5 +128,45 @@ void tickCars() {
                 game.objects[i].xPos += game.objects[i].xVel;
             }
         }
+    }
+}
+
+void hitFrog(){
+    hit++;
+}
+
+void checkCollision() {
+
+    if(hit > 0) {
+        hit = 0;
+
+        //set frog back to start
+        game.objects[0].xPos = 20 * 32;
+        game.objects[0].yPos = 22 * 32;
+    }
+
+    for(int i = 1; i < sizeof(game.objects) / sizeof(game.objects[0]); i++) {
+
+        // for small size obstacles
+        if(game.objects[i].size == 1) {
+            if(game.objects[i].xPos == getFrogX() && game.objects[i].yPos == getFrogY()) {
+                hitFrog();
+                continue;
+            }
+        }
+        // for large size obstacles
+        if(game.objects[i].size == 3) {
+            if((game.objects[i].xPos == getFrogX() || game.objects[i].xPos + 32 == getFrogX() || game.objects[i].xPos - 32 == getFrogX()) && game.objects[i].yPos == getFrogY()) {
+                hitFrog();
+                continue;
+            }
+        }
+    }
+}
+
+void tickGame() {
+    if(!game.isPaused) {
+        tickCars();
+        checkCollision();
     }
 }

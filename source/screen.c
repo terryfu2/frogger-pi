@@ -127,6 +127,7 @@ void drawStartButton(button currentButton){
         }
     }
 }
+
 void drawEndButton(button currentButton){
     int *imagePtr = (int *) currentButton.image_pixels;
 
@@ -142,6 +143,7 @@ void drawEndButton(button currentButton){
         }
     }
 }
+
 void drawBackground() {
     for(int y = 0; y < HEIGHT; y++) {
         for(int x = 0; x < WIDTH; x++) {
