@@ -60,4 +60,6 @@ int FrogOnLog(int log);
 
 void checkLoss();
 
+void quitGame();
+
 void tickGame();

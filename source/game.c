@@ -42,7 +42,7 @@ void newGame() {
     resetGameState();
 
     //add frog
-    setObject(newFrog(20, 22), 0);
+    setObject(newFrog(20, 21), 0);
 
     //add cars
     setObject(newLog(20, 6, 3, 0), 1);
@@ -223,7 +223,9 @@ void checkLoss() {
         game.loseFlag = 1;
     }
 }
-
+void quitGame(){
+    game.loseFlag = 1;
+}
 void tickGame() {
     if(!game.isPaused) {
         tickCars();

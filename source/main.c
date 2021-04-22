@@ -9,20 +9,15 @@
 #include <stdio.h>
 
 
-//main function
-int main() {
-
-    // initialize input
-    initSNES();
-
-    //start game
-    newGame();
-
-    //draw menu and allow user input - if gameloop == 0, play game
-    int gameloop = drawMenu();
-
- 
+void gameLoop(int runMenu){
+    resetStart();
+    int gameloop;
     //game loop
+    if(runMenu == 1){
+        gameloop = drawMenu();
+    }else{
+        gameloop = 0;
+    }
     while(gameloop == 0) {
 
         // if loss, exit loop
@@ -42,14 +37,33 @@ int main() {
         drawGrid();
         drawObjects(getGameState());
         drawFrog(getGameState());
-        
+        drawLives(getGameState().lives);
         //if start is pressed, open the pause menu
         if(getStart() == 1){
-            drawHalf(gamePaused);
+            int check = drawHalf(gamePaused,1);
+            if(check ==1){
+                return;
+            }
         }
         drawScreen();
     }
-    drawHalf(winScreen);
+}
+
+//main function
+int main() {
+
+    // initialize input
+    initSNES();
+
+    //start game
+    newGame();
+
+    //draw menu and allow user input - if gameloop == 0, play game
+    
+
+    gameLoop(1);
+    
+    drawHalf(lossScreen,0);
     drawScreen();
     
     printf("Exiting program\n");

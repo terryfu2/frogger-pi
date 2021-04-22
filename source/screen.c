@@ -70,6 +70,7 @@ int drawMenu(){
     }
     //draw buttons for the menu
     int up;
+    resetA(0);
     while(getA() != 1){
         up = getUp();
 
@@ -88,11 +89,31 @@ int drawMenu(){
     int gameloop = 1;
     if(up == 1){
         gameloop = 0;
+    }else{
+        gameloop = 1;
     }
     return gameloop;
 }
+void drawLives(int lives){
 
-void drawHalf(halfscreen screenToPrint){
+    for(int i = 0;i<lives;i++){
+        int *imagePtr = (int *) hearts.image_pixels;
+
+        int j = 0;
+
+        for(int y = 656; y < hearts.height + 656; y++) {
+            for(int x = 32+32*i; x < hearts.width + 32+32*i; x++) {
+
+                //assign color value to corresponding pixel
+                screenImage[x][y] = imagePtr[j];
+                j++;
+
+            }
+        }
+    }
+
+}
+int drawHalf(halfscreen screenToPrint, int currentCheck){
 
    int *imagePtr = (int *) screenToPrint.image_pixels;
 
@@ -111,6 +132,43 @@ void drawHalf(halfscreen screenToPrint){
                 screenImage[x][y] = 0xF800; //red for border
 
             }
+        }
+    }
+    
+    if(currentCheck == 1){
+        printf("got");
+        //resetA();
+        //resetStart();
+        int up;
+        resetA(1);
+        while(getA() == 1 && getStart() ==1){
+            
+            Read_Snes();
+            readButton();
+            drawScreen();
+            up = getUp();
+
+            if(up == 1){
+                drawStartButton(whiteReset);
+                drawEndButton(blackQuit);
+            }
+            else{
+                drawStartButton(blackReset);
+                drawEndButton(whiteQuit);
+            }
+          
+        }
+        if(up == 0){
+            newGame();
+            gameLoop(1);
+            return 1;
+          
+        }
+        else{
+            resetStart();
+            newGame();
+            gameLoop(0);
+            return 1;
         }
     }
 
