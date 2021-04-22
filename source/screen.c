@@ -73,14 +73,11 @@ int drawMenu(){
         if(up == 1){
             drawStartButton(whiteStart);
             drawEndButton(blackQuit);
-
         }
         else{
             drawStartButton(blackStart);
             drawEndButton(whiteQuit);
-
         }
-       
         Read_Snes();
         readButton();
         drawScreen();
