@@ -20,7 +20,8 @@ int main() {
 
     //draw menu and allow user input - if gameloop == 0, play game
     int gameloop = drawMenu();
-    drawhalf(winScreen);
+
+ 
     //game loop
     while(gameloop == 0) {
 
@@ -38,7 +39,8 @@ int main() {
         }
         drawScreen();
     }
-
+    //drawHalf(winScreen);
+    //y drawScreen();
     
     printf("Exiting program\n");
 
