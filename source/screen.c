@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/mman.h>
+#include <stdio.h>
 #include "screen.h"
 #include "framebuffer.h"
 #include "game.h"
@@ -67,16 +68,24 @@ void drawMenu(){
 
 }
 void drawHalf(){
+
    int *imagePtr = (int *) gamePaused.image_pixels;
 
     int j = 0;
 
-    for(int y = 200; y < gamePaused.height; y++) {
-        for(int x = 300; x < gamePaused.width; x++) {
+    for(int y = 200; y < gamePaused.height + 200; y++) {
+        for(int x = 300; x < gamePaused.width + 300; x++) {
 
             //assign color value to corresponding pixel
             screenImage[x][y] = imagePtr[j];
             j++;
+            if(y == 200|| x == 300) {
+                screenImage[x][y] = 0xF800; //red for border
+
+            }else if(y == gamePaused.height + 200 - 1 || x == gamePaused.width + 300 - 1) {
+                screenImage[x][y] = 0xF800; //red for border
+
+            }
         }
     }
 

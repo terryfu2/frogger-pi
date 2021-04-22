@@ -4,6 +4,7 @@
 #include "initGPIO.h"
 #include "object.h"
 #include "game.h"
+#include "screen.h"
 
 
 //SNES offsets
@@ -167,9 +168,14 @@ void readGame(GameState state) {
                     printf("Please press a button...\n\n");
                     break;
                 case 3:
-                    printf("You have pressed Start\n\n");
+                    //printf("You have pressed Start\n\n");
                     shouldClose = 1;
-                    pressedStart = 1;
+                    if(pressedStart == 1){
+                        pressedStart = 0;
+                    }
+                    else{
+                        pressedStart = 1;
+                    }
                     break;
                 case 4:
                     // printf("%d",state.objects[0].xPos);
