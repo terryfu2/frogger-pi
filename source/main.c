@@ -5,6 +5,7 @@
 #include "buttons.h"
 
 
+
 #include <stdio.h>
 
 
@@ -31,12 +32,8 @@ int main() {
         drawGrid();
         drawFrog(getGameState());
         //if start is pressed, open the pause menu - if any other button is pressed while in pause, end game
-        if(getStart() == 1){
-            drawHalf();
-        }
-        else if(getCheck() == 1){
-            break;
-        }
+        checkPause();
+
         drawScreen();
     }
 
@@ -45,4 +42,14 @@ int main() {
     Wait(2000000);
 
     return 0;
+}
+
+void checkPause(){
+
+    while(getStart() == 1 && getCheck() == 0){
+        drawHalf();
+        readPause();
+        drawScreen();
+    }
+
 }
