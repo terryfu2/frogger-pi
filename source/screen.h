@@ -13,7 +13,7 @@ typedef struct {
 
 void drawScreen();
 
-void drawMenu();
+int drawMenu();
 
 void drawHalf();
 

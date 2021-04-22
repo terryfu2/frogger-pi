@@ -44,7 +44,7 @@ void drawScreen() {
     pixel = NULL;
     munmap(framebufferstruct.fptr, framebufferstruct.screenSize);
 }
-void drawMenu(){
+int drawMenu(){
    int *imagePtr = (int *) startMenu.image_pixels;
 
     int j = 0;
@@ -65,7 +65,31 @@ void drawMenu(){
 
         }
     }
+    //draw buttons for the menu
+    int up;
+    while(getA() != 1){
+        up = getUp();
 
+        if(up == 1){
+            drawStartButton(whiteStart);
+            drawEndButton(blackQuit);
+
+        }
+        else{
+            drawStartButton(blackStart);
+            drawEndButton(whiteQuit);
+
+        }
+       
+        Read_Snes();
+        readButton();
+        drawScreen();
+    }
+    int gameloop = 1;
+    if(up == 1){
+        gameloop = 0;
+    }
+    return gameloop;
 }
 void drawHalf(){
 

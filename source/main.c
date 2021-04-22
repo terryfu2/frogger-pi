@@ -17,32 +17,9 @@ int main() {
     //start game
     newGame();
 
-    //draw menu and allow user movement
-    drawMenu();
-    int up;
-    while(getA() != 1){
-        up = getUp();
+    //draw menu and allow user input
+    int gameloop = drawMenu();
 
-        if(up == 1){
-            drawStartButton(whiteStart);
-            drawEndButton(blackQuit);
-
-        }
-        else{
-            drawStartButton(blackStart);
-            drawEndButton(whiteQuit);
-
-        }
-       
-        Read_Snes();
-        readButton();
-        drawScreen();
-    }
-    int gameloop = 1;
-    if(up == 1){
-        gameloop = 0;
-    }
-    
     while(gameloop == 0) {
 
         // input
@@ -53,6 +30,7 @@ int main() {
         drawBackground();
         drawGrid();
         drawFrog(getGameState());
+        //if start is pressed, open the pause menu
         if(getStart() == 1){
             drawHalf();
         }
