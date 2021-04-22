@@ -49,8 +49,8 @@ int main() {
         }
         drawScreen();
     }
-    //drawHalf(winScreen);
-    //y drawScreen();
+    drawHalf(winScreen);
+    drawScreen();
     
     printf("Exiting program\n");
 
