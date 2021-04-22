@@ -89,11 +89,13 @@ int drawMenu(){
     int gameloop = 1;
     if(up == 1){
         gameloop = 0;
+    }else{
+        gameloop = 1;
     }
     return gameloop;
 }
 
-void drawHalf(halfscreen screenToPrint, int currentCheck){
+int drawHalf(halfscreen screenToPrint, int currentCheck){
 
    int *imagePtr = (int *) screenToPrint.image_pixels;
 
@@ -141,12 +143,14 @@ void drawHalf(halfscreen screenToPrint, int currentCheck){
         if(up == 0){
             newGame();
             gameLoop(1);
+            return 1;
           
         }
         else{
             resetStart();
             newGame();
             gameLoop(0);
+            return 1;
         }
     }
 

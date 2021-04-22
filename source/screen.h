@@ -16,7 +16,7 @@ void drawScreen();
 
 int drawMenu();
 
-void drawHalf(halfscreen screenToPrint, int paused);
+int drawHalf(halfscreen screenToPrint, int paused);
 
 void drawStartButton();
 

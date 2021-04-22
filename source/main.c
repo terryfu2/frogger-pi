@@ -8,6 +8,7 @@
 
 #include <stdio.h>
 void gameLoop(int runMenu){
+    resetStart();
     int gameloop;
     //game loop
     if(runMenu == 1){
@@ -37,7 +38,10 @@ void gameLoop(int runMenu){
          
         //if start is pressed, open the pause menu
         if(getStart() == 1){
-            drawHalf(gamePaused,1);
+            int check = drawHalf(gamePaused,1);
+            if(check ==1){
+                return;
+            }
         }
         drawScreen();
     }
@@ -56,33 +60,7 @@ int main() {
     
 
     gameLoop(1);
-    //game loop
-    /*while(gameloop == 0) {
-
-        // if loss, exit loop
-        if(getGameState().loseFlag) {
-            break;
-        }
-
-        // input
-        Read_Snes();
-        readGame(getGameState());
-        
-        // update objects
-        tickGame();
-
-        // update screen
-        drawBackground();
-        drawGrid();
-        drawObjects(getGameState());
-        drawFrog(getGameState());
-         
-        //if start is pressed, open the pause menu
-        if(getStart() == 1){
-            drawHalf(gamePaused,1);
-        }
-        drawScreen();
-    }*/
+    
     drawHalf(lossScreen,0);
     drawScreen();
     
