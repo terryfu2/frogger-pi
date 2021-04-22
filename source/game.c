@@ -15,6 +15,15 @@ void resetGameState() {
     game.stepsLeft = 30;
     game.winFlag = 0;
     game.loseFlag = 0;
+    game.isPaused = 0;
+}
+
+void pauseGame() {
+    game.isPaused = 1;
+}
+
+void unpauseGame() {
+    game.isPaused = 0;
 }
 
 void setObject(GameObj object, int index) {

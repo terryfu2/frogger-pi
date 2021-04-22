@@ -24,6 +24,9 @@ typedef struct {
 
     // lose condition flag
     int loseFlag;
+
+    // pause flag
+    int isPaused;
     
 }GameState;
 
@@ -31,7 +34,9 @@ GameState getGameState();
 
 void resetGameState();
 
-void setGameMap();
+void pauseGame();
+
+void unpauseGame();
 
 void setObject(GameObj object, int index);
 

@@ -172,9 +172,13 @@ void readGame(GameState state) {
                     shouldClose = 1;
                     if(pressedStart == 1){
                         pressedStart = 0;
+
+                        //unpauseGame();
                     }
                     else{
                         pressedStart = 1;
+
+                        //pauseGame();
                     }
                     break;
                 case 4:
