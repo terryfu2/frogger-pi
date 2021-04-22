@@ -25,6 +25,11 @@ int main() {
     //game loop
     while(gameloop == 0) {
 
+        // if loss, exit loop
+        if(getGameState().loseFlag) {
+            break;
+        }
+
         // input
         Read_Snes();
         readGame(getGameState());

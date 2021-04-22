@@ -146,6 +146,9 @@ void checkCollision() {
     if(hit > 0) {
         hit = 0;
 
+        //decrement lives
+        game.lives--;
+
         //set frog back to start
         game.objects[0].xPos = 20 * 32;
         game.objects[0].yPos = 22 * 32;
@@ -170,9 +173,22 @@ void checkCollision() {
     }
 }
 
+void checkLoss() {
+    if(game.lives == 0) {
+        game.loseFlag = 1;
+    }
+    if(game.timeLeft == 0) {
+        game.loseFlag = 1;
+    }
+    if(game.stepsLeft == 0) {
+        game.loseFlag = 1;
+    }
+}
+
 void tickGame() {
     if(!game.isPaused) {
         tickCars();
         checkCollision();
+        checkLoss();
     }
 }

@@ -54,4 +54,6 @@ void hitFrog();
 
 void checkCollision();
 
+void checkLoss();
+
 void tickGame();

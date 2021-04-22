@@ -244,7 +244,7 @@ void drawGrid() {
     for(int y = 0; y < HEIGHT; y += 32) {
         for(int x = 0; x < WIDTH; x += 32) {
 
-            screenImage[x][y] = 0xF800;
+            screenImage[x][y] = 0x377;
 
         }
     }
