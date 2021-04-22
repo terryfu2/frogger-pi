@@ -15,6 +15,8 @@ typedef struct ScreenCoord{
 
 typedef struct {
 
+    int type; // 0 is car, 1 is log
+
     int xPos, yPos;
 
     int xVel, yVel;

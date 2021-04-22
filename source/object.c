@@ -21,6 +21,8 @@ GameObj newFrog(int x , int y) {
 GameObj newCar(int x, int y, int size, int direction) {
     GameObj car;
 
+    car.type = 0;
+
     car.xPos = x * 32;
     car.yPos = y * 32;
 
@@ -28,7 +30,7 @@ GameObj newCar(int x, int y, int size, int direction) {
 
     if(direction == 0) {
 
-        car.xVel = -32;
+        car.xVel = -16;
         
         if(size == 1) {
             // small sprite
@@ -45,7 +47,7 @@ GameObj newCar(int x, int y, int size, int direction) {
         
     }else if(direction == 1) {
 
-        car.xVel = 32;
+        car.xVel = 16;
 
         if(size == 1) {
             // small sprite
@@ -68,6 +70,8 @@ GameObj newCar(int x, int y, int size, int direction) {
 GameObj newLog(int x, int y, int size, int direction) {
     GameObj log;
 
+    log.type = 1;
+
     log.xPos = x * 32;
     log.yPos = y * 32;
 
@@ -75,13 +79,15 @@ GameObj newLog(int x, int y, int size, int direction) {
 
     if(direction == 0) {
 
-        log.xVel = -32;
+        log.xVel = -8;
         
     }else if(direction == 1) {
 
-        log.xVel = 32;
+        log.xVel = 8;
 
     }
+
+    log.largeSprite = largeLog;
 
     return log;
 }

@@ -50,9 +50,13 @@ void moveFrog(int direction);
 
 void tickCars();
 
+void tickLogs();
+
 void hitFrog();
 
 void checkCollision();
+
+int FrogOnLog(int log);
 
 void checkLoss();
 

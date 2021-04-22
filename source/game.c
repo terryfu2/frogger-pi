@@ -45,9 +45,9 @@ void newGame() {
     setObject(newFrog(20, 22), 0);
 
     //add cars
-    setObject(newCar(20, 6, 3, 0), 1);
+    setObject(newLog(20, 6, 3, 0), 1);
 
-    setObject(newCar(20, 8, 3, 1), 2);
+    setObject(newLog(20, 8, 3, 1), 2);
 
     setObject(newCar(20, 10, 1, 0), 3);
 
@@ -85,7 +85,7 @@ void moveFrog(int direction) {
 
         }else if(direction == left) {
 
-            if(game.objects[0].xPos != 32) {
+            if(getFrogX() - 32 > 8) {
                 game.objects[0].xPos -= game.objects[0].xVel;
             }else {
                 hitFrog();
@@ -93,7 +93,7 @@ void moveFrog(int direction) {
 
         }else if(direction == right) {
 
-            if(game.objects[0].xPos != 39 * 32) {
+            if(getFrogX() + 32 < 1272) {
                 game.objects[0].xPos += game.objects[0].xVel;
             }else {
                 hitFrog();
@@ -106,7 +106,7 @@ void moveFrog(int direction) {
 void tickCars() {
     for(int i = 1; i < sizeof(game.objects) / sizeof(game.objects[0]); i++) {
 
-        if(game.objects[i].size == 1) {     //tick small cars
+        if(game.objects[i].size == 1 && game.objects[i].type == 0) {     //tick small cars
 
             if(game.objects[i].xPos == 39 * 32 && game.objects[i].xVel > 0) {
 
@@ -120,7 +120,7 @@ void tickCars() {
                 game.objects[i].xPos += game.objects[i].xVel;
             }
 
-        }else if(game.objects[i].size == 3) {       //tick large cars
+        }else if(game.objects[i].size == 3 && game.objects[i].type == 0) {       //tick large cars
 
             if(game.objects[i].xPos == 38 * 32 && game.objects[i].xVel > 0) {
 
@@ -131,6 +131,31 @@ void tickCars() {
                 game.objects[i].xPos = 38 * 32;
 
             }else {
+                game.objects[i].xPos += game.objects[i].xVel;
+            }
+        }
+    }
+}
+
+void tickLogs() {
+    for(int i = 1; i < sizeof(game.objects) / sizeof(game.objects[0]); i++) {
+
+        if(game.objects[i].size == 3 && game.objects[i].type == 1) {       //tick large logs
+
+            if(game.objects[i].xPos == 38 * 32 && game.objects[i].xVel > 0) {
+
+                game.objects[i].xPos = 2 * 32;
+
+            }else if(game.objects[i].xPos == 2 * 32 && game.objects[i].xVel < 0) {
+
+                game.objects[i].xPos = 38 * 32;
+
+            }else {
+
+                if(FrogOnLog(i)) {
+                    game.objects[0].xPos += game.objects[i].xVel;
+                }
+
                 game.objects[i].xPos += game.objects[i].xVel;
             }
         }
@@ -154,23 +179,37 @@ void checkCollision() {
         game.objects[0].yPos = 22 * 32;
     }
 
+    if(getFrogX() == 0 || getFrogX() == 39 * 32) {
+        hitFrog();
+    }
+
     for(int i = 1; i < sizeof(game.objects) / sizeof(game.objects[0]); i++) {
 
         // for small size obstacles
-        if(game.objects[i].size == 1) {
+        if(game.objects[i].size == 1 && game.objects[i].type == 0) {
             if(game.objects[i].xPos == getFrogX() && game.objects[i].yPos == getFrogY()) {
                 hitFrog();
                 continue;
             }
         }
         // for large size obstacles
-        if(game.objects[i].size == 3) {
+        if(game.objects[i].size == 3 && game.objects[i].type == 0) {
             if((game.objects[i].xPos == getFrogX() || game.objects[i].xPos + 32 == getFrogX() || game.objects[i].xPos - 32 == getFrogX()) && game.objects[i].yPos == getFrogY()) {
                 hitFrog();
                 continue;
             }
         }
     }
+}
+
+int FrogOnLog(int log) {
+    int onLog = 0;
+
+    if((game.objects[log].xPos == getFrogX() || game.objects[log].xPos + 32 == getFrogX() || game.objects[log].xPos - 32 == getFrogX()) && game.objects[log].yPos == getFrogY()) {
+        onLog = 1;
+    }
+
+    return onLog;
 }
 
 void checkLoss() {
@@ -188,6 +227,7 @@ void checkLoss() {
 void tickGame() {
     if(!game.isPaused) {
         tickCars();
+        tickLogs();
         checkCollision();
         checkLoss();
     }

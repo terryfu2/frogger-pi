@@ -61,6 +61,7 @@ struct fbs initFbInfo(void)
         (int) vinfo.bits_per_pixel, (int) finfo.line_length,
         (float) screensize};
     
+    close(fbfd);
     return result;
 
 }
