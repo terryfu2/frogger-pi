@@ -94,7 +94,25 @@ int drawMenu(){
     }
     return gameloop;
 }
+void drawLives(int lives){
 
+    for(int i = 0;i<lives;i++){
+        int *imagePtr = (int *) heart.image_pixels;
+
+        int j = 0;
+
+        for(int y = 64; y < heart.height + 64; y++) {
+            for(int x = 32+32*i; x < heart.width + 32+32*i; x++) {
+
+                //assign color value to corresponding pixel
+                screenImage[x][y] = imagePtr[j];
+                j++;
+
+            }
+        }
+    }
+
+}
 int drawHalf(halfscreen screenToPrint, int currentCheck){
 
    int *imagePtr = (int *) screenToPrint.image_pixels;
