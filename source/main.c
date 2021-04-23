@@ -21,7 +21,7 @@ void gameLoop(int runMenu){
     while(gameloop == 0) {
 
         // if loss, exit loop
-        if(getGameState().loseFlag) {
+        if(getGameState().loseFlag || getGameState().winFlag) {
             break;
         }
 
@@ -70,9 +70,15 @@ int main() {
     
 
     gameLoop(1);
-    
-    drawHalf(lossScreen,0);
-    drawScreen();
+
+    if(getGameState().loseFlag){
+        drawHalf(lossScreen,0);
+        drawScreen();
+    }
+    if(getGameState().winFlag){
+        drawHalf(winScreen,0);
+        drawScreen();
+    }
     
     printf("Exiting program\n");
 

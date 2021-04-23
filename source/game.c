@@ -92,6 +92,8 @@ void moveFrog(int direction) {
 
             if(game.objects[0].yPos != 32) {
                 game.objects[0].yPos -= game.objects[0].yVel;
+            }else{
+                game.winFlag = 1;
             }
 
         }else if(direction == down) {
@@ -255,7 +257,11 @@ int FrogOnLog(int i) {
     return onLog;
 }
 
-
+void checkWin() {
+    if(getFrogY() == 32) {
+        game.winFlag = 1;
+    }
+}
 
 void checkLoss() {
     if(game.lives == 0) {

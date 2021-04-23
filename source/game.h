@@ -65,6 +65,8 @@ void checkCollision();
 
 int FrogOnLog(int log);
 
+void checkWin();
+
 void checkLoss();
 
 void quitGame();
