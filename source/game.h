@@ -3,9 +3,14 @@
 #include "object.h"
 
 typedef struct {
+
+    //river bounds
+    int rStart;
+
+    int rEnd;
      
     // positions of all objects, including frog
-    GameObj objects[5];
+    GameObj objects[15];
 
     // score
     int score;
@@ -14,7 +19,7 @@ typedef struct {
     int lives;
 
     // time left
-    int timeLeft;
+    int timeLeft; 
 
     // steps/moves left
     int stepsLeft;
@@ -63,3 +68,5 @@ void checkLoss();
 void quitGame();
 
 void tickGame();
+
+void makeRiver(int start, int end);

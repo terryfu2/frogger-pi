@@ -216,9 +216,18 @@ void drawBackground() {
                 screenImage[x][y] = 0xF800; //red for border
 
             }else {
+                
                 screenImage[x][y] = 0x0;
 
             }
+        }
+    }
+}
+
+void drawRiver(GameState state) {
+    for(int y = state.rStart * 32; y < state.rEnd * 32; y ++) {
+        for(int x = 0; x < WIDTH; x ++) {
+            screenImage[x][y] = 0x377;
         }
     }
 }

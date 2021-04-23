@@ -24,6 +24,8 @@ void drawEndButton();
 
 void drawBackground();
 
+void drawRiver(GameState state);
+
 void drawObjects(GameState state);
 
 void drawFrog(GameState state);

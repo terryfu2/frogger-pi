@@ -37,4 +37,3 @@ GameObj newCar(int x, int y, int size, int direction);
 
 GameObj newLog(int x, int y, int size, int direction);
 
-GameObj newWater(int x, int y);

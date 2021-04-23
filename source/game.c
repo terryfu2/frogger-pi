@@ -42,19 +42,31 @@ void newGame() {
     resetGameState();
 
     //add frog
-    setObject(newFrog(20, 21), 0);
+    setObject(newFrog(20, 20), 0);
+    
+    //add river
+    makeRiver(4, 7);
 
-    //add cars
-    setObject(newLog(20, 6, 3, 0), 1);
+    //add other objects
+    setObject(newLog(15, 5, 3, 0), 1);
+    setObject(newLog(25, 6, 3, 1), 2);
+    setObject(newLog(5, 6, 3, 1), 3);
 
-    setObject(newLog(20, 8, 3, 1), 2);
+    setObject(newCar(20, 13, 3, 0), 4);
+    setObject(newCar(30, 13, 3, 0), 5);
 
-    // setObject(newCar(20, 10, 1, 0), 3);
+    setObject(newCar(10, 14, 1, 1), 6);
+    setObject(newCar(37, 14, 3, 1), 7);
 
-    setObject(newWater(20, 10), 3);
+    setObject(newCar(14, 16, 3, 0), 8);
+    setObject(newCar(21, 16, 1, 0), 9);
 
-    setObject(newCar(20, 12, 1, 1), 4);
+    setObject(newCar(10, 17, 3, 1), 10);
+    setObject(newCar(20, 17, 3, 1), 11);
+    setObject(newCar(30, 17, 1, 1), 12);
 
+    setObject(newCar(15, 19, 3, 0), 13);
+    setObject(newCar(32, 19, 3, 0), 14);
 }
 
 int getFrogX() {
@@ -81,7 +93,7 @@ void moveFrog(int direction) {
 
         }else if(direction == down) {
             
-            if(game.objects[0].yPos != 22 * 32) {
+            if(game.objects[0].yPos != 20 * 32) {
                 game.objects[0].yPos += game.objects[0].yVel;
             }
 
@@ -178,11 +190,26 @@ void checkCollision() {
 
         //set frog back to start
         game.objects[0].xPos = 20 * 32;
-        game.objects[0].yPos = 22 * 32;
+        game.objects[0].yPos = 20 * 32;
     }
 
     if(getFrogX() == 0 || getFrogX() == 39 * 32) {
         hitFrog();
+    }
+
+    if(getFrogY() > game.rStart * 32 && getFrogY() < game.rEnd * 32) {
+
+        int onLog = 0;
+
+        for(int i = 1; i < sizeof(game.objects) / sizeof(game.objects[0]); i++) {
+            if(FrogOnLog(i)) {
+                onLog = 1;
+            }
+        }
+
+        if(onLog == 0) {
+            hitFrog();
+        }
     }
 
     for(int i = 1; i < sizeof(game.objects) / sizeof(game.objects[0]); i++) {
@@ -204,15 +231,28 @@ void checkCollision() {
     }
 }
 
-int FrogOnLog(int log) {
+int FrogOnLog(int i) {
     int onLog = 0;
 
-    if((game.objects[log].xPos == getFrogX() || game.objects[log].xPos + 32 == getFrogX() || game.objects[log].xPos - 32 == getFrogX()) && game.objects[log].yPos == getFrogY()) {
-        onLog = 1;
+    if(game.objects[i].type == 1) {
+
+        int top, bot, left, right;
+
+        top = game.objects[i].yPos - (game.objects[i].sprite.height / 2);
+        bot = game.objects[i].yPos + (game.objects[i].sprite.height / 2);
+
+        left = game.objects[i].xPos - (game.objects[i].sprite.width / 2);
+        right = game.objects[i].xPos + (game.objects[i].sprite.width / 2);
+
+        if(getFrogX() >= left && getFrogX() <= right && getFrogY() <= bot && getFrogY() >= top) {
+            onLog = 1;
+        }
     }
 
     return onLog;
 }
+
+
 
 void checkLoss() {
     if(game.lives == 0) {
@@ -225,9 +265,11 @@ void checkLoss() {
         game.loseFlag = 1;
     }
 }
+
 void quitGame(){
     game.loseFlag = 1;
 }
+
 void tickGame() {
     if(!game.isPaused) {
         tickCars();
@@ -235,4 +277,10 @@ void tickGame() {
         checkCollision();
         checkLoss();
     }
+}
+
+void makeRiver(int start, int end) {
+
+    game.rStart = start;
+    game.rEnd = end;
 }
