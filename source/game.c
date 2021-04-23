@@ -13,7 +13,7 @@ GameState getGameState() {
 void resetGameState() { 
     game.score = 500;
     game.lives = 4;
-    game.timeLeft = 100;
+    game.timeLeft = 120;
     game.stepsLeft = 99;
     game.winFlag = 0;
     game.loseFlag = 0;

@@ -152,7 +152,7 @@ void drawTime(int time){
 
     int j = 0;
     for(int y = 656; y < first.height + 656; y++) {
-        for(int x = 640; x < first.width + 640; x++) {
+        for(int x = 704; x < first.width + 704; x++) {
 
             //assign color value to corresponding pixel
             screenImage[x][y] = imagePtr[j];
@@ -179,13 +179,13 @@ void drawTime(int time){
     remainder = time % 1000;
     remainder = remainder/100;
     number third = getNum(remainder);
-    int *imagePtr2 = (int *) third.image_pixels;
+    int *imagePtr3 = (int *) third.image_pixels;
     j = 0;
     for(int y = 656; y < first.height + 656; y++) {
-        for(int x = 704; x < first.width + 704; x++) {
+        for(int x = 640; x < first.width + 640; x++) {
 
             //assign color value to corresponding pixel
-            screenImage[x][y] = imagePtr2[j];
+            screenImage[x][y] = imagePtr3[j];
             j++;
 
         }
@@ -225,13 +225,13 @@ void drawScore(int score){
     remainder = score % 1000;
     remainder = remainder/100;
     number third = getNum(remainder);
-    int *imagePtr2 = (int *) third.image_pixels;
+    int *imagePtr3 = (int *) third.image_pixels;
     j = 0;
     for(int y = 656; y < first.height + 656; y++) {
         for(int x = 448; x < first.width + 448; x++) {
 
             //assign color value to corresponding pixel
-            screenImage[x][y] = imagePtr2[j];
+            screenImage[x][y] = imagePtr3[j];
             j++;
 
         }
@@ -240,13 +240,13 @@ void drawScore(int score){
     remainder = score % 10000;
     remainder = remainder/1000;
     number four = getNum(remainder);
-    int *imagePtr2 = (int *) four.image_pixels;
+    int *imagePtr4 = (int *) four.image_pixels;
     j = 0;
     for(int y = 656; y < first.height + 656; y++) {
         for(int x = 416; x < first.width + 416; x++) {
 
             //assign color value to corresponding pixel
-            screenImage[x][y] = imagePtr2[j];
+            screenImage[x][y] = imagePtr4[j];
             j++;
 
         }
