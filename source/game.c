@@ -12,9 +12,9 @@ GameState getGameState() {
 //reset game to base state for restart
 void resetGameState() { 
     game.score = 500;
-    game.lives = 3;
+    game.lives = 4;
     game.timeLeft = 100;
-    game.stepsLeft = 30;
+    game.stepsLeft = 99;
     game.winFlag = 0;
     game.loseFlag = 0;
     game.isPaused = 0;

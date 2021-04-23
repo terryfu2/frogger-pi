@@ -145,6 +145,113 @@ void drawSteps(int steps){
         }
     }
 }
+void drawTime(int time){
+    int remainder = time % 10;
+    number first = getNum(remainder);
+    int *imagePtr = (int *) first.image_pixels;
+
+    int j = 0;
+    for(int y = 656; y < first.height + 656; y++) {
+        for(int x = 640; x < first.width + 640; x++) {
+
+            //assign color value to corresponding pixel
+            screenImage[x][y] = imagePtr[j];
+            j++;
+
+        }
+    }
+    time -= remainder;
+    remainder = time % 100;
+    remainder = remainder/10;
+    number second = getNum(remainder);
+    int *imagePtr2 = (int *) second.image_pixels;
+    j = 0;
+    for(int y = 656; y < first.height + 656; y++) {
+        for(int x = 672; x < first.width + 672; x++) {
+
+            //assign color value to corresponding pixel
+            screenImage[x][y] = imagePtr2[j];
+            j++;
+
+        }
+    }
+    time -= remainder;
+    remainder = time % 1000;
+    remainder = remainder/100;
+    number third = getNum(remainder);
+    int *imagePtr2 = (int *) third.image_pixels;
+    j = 0;
+    for(int y = 656; y < first.height + 656; y++) {
+        for(int x = 704; x < first.width + 704; x++) {
+
+            //assign color value to corresponding pixel
+            screenImage[x][y] = imagePtr2[j];
+            j++;
+
+        }
+    }
+}
+void drawScore(int score){
+    int remainder = score % 10;
+    number first = getNum(remainder);
+    int *imagePtr = (int *) first.image_pixels;
+
+    int j = 0;
+    for(int y = 656; y < first.height + 656; y++) {
+        for(int x = 512; x < first.width + 512; x++) {
+
+            //assign color value to corresponding pixel
+            screenImage[x][y] = imagePtr[j];
+            j++;
+
+        }
+    }
+    score -= remainder;
+    remainder = score % 100;
+    remainder = remainder/10;
+    number second = getNum(remainder);
+    int *imagePtr2 = (int *) second.image_pixels;
+    j = 0;
+    for(int y = 656; y < first.height + 656; y++) {
+        for(int x = 480; x < first.width + 480; x++) {
+
+            //assign color value to corresponding pixel
+            screenImage[x][y] = imagePtr2[j];
+            j++;
+
+        }
+    }
+    score -= remainder;
+    remainder = score % 1000;
+    remainder = remainder/100;
+    number third = getNum(remainder);
+    int *imagePtr2 = (int *) third.image_pixels;
+    j = 0;
+    for(int y = 656; y < first.height + 656; y++) {
+        for(int x = 448; x < first.width + 448; x++) {
+
+            //assign color value to corresponding pixel
+            screenImage[x][y] = imagePtr2[j];
+            j++;
+
+        }
+    }
+    score -= remainder;
+    remainder = score % 10000;
+    remainder = remainder/1000;
+    number four = getNum(remainder);
+    int *imagePtr2 = (int *) four.image_pixels;
+    j = 0;
+    for(int y = 656; y < first.height + 656; y++) {
+        for(int x = 416; x < first.width + 416; x++) {
+
+            //assign color value to corresponding pixel
+            screenImage[x][y] = imagePtr2[j];
+            j++;
+
+        }
+    }
+}
 
 number getNum(int num){
     if(num == 0){
