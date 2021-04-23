@@ -23,7 +23,7 @@ myProg: $(OBJECTS) $(COBJECTS)
 
 # Rule to make the object files.
 $(BUILD)%.o: $(SOURCE)%.s
-	as -pthread  --gstabs -I $(SOURCE) $< -o $@
+	as  --gstabs -I $(SOURCE) $< -o $@
 
 $(BUILD)%.o: $(SOURCE)%.c
 	gcc -pthread  -g -c -O0 -Wall -I $(SOURCE) $< -o $@
