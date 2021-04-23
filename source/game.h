@@ -46,6 +46,8 @@ int getFrogX();
 
 int getFrogY();
 
+void updateScore();
+
 void moveFrog(int direction);
 
 void tickCars();

@@ -65,6 +65,9 @@ int getFrogY() {
     return game.objects[0].yPos;
 }
 
+void updateScore(){
+    game.score = game.stepsLeft + game.timeLeft + game.lives * 100;
+}
 //move frog in given direction
 void moveFrog(int direction) {
     if(!game.isPaused) {

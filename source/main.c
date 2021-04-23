@@ -40,6 +40,7 @@ void gameLoop(int runMenu){
         //draw currents
         drawLives(getGameState().lives);
         drawSteps(getGameState().stepsLeft);
+        updateScore();
         drawScore(getGameState().score);
         drawTime(getGameState().timeLeft);
         //if start is pressed, open the pause menu
