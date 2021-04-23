@@ -12,9 +12,9 @@ GameState getGameState() {
 //reset game to base state for restart
 void resetGameState() { 
     game.score = 500;
-    game.lives = 3;
-    game.timeLeft = 100;
-    game.stepsLeft = 30;
+    game.lives = 4;
+    game.timeLeft = 120;
+    game.stepsLeft = 99;
     game.winFlag = 0;
     game.loseFlag = 0;
     game.isPaused = 0;
@@ -77,6 +77,9 @@ int getFrogY() {
     return game.objects[0].yPos;
 }
 
+void updateScore(){
+    game.score = game.stepsLeft + game.timeLeft + game.lives * 100;
+}
 //move frog in given direction
 void moveFrog(int direction) {
     if(!game.isPaused) {
@@ -84,7 +87,7 @@ void moveFrog(int direction) {
         int down = 1;
         int left = 2;
         int right = 3;
-
+        game.stepsLeft --;
         if(direction == up) {
 
             if(game.objects[0].yPos != 32) {

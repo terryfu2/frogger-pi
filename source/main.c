@@ -38,7 +38,13 @@ void gameLoop(int runMenu){
         drawRiver(getGameState());
         drawObjects(getGameState());
         drawFrog(getGameState());
+
+        //draw currents
         drawLives(getGameState().lives);
+        drawSteps(getGameState().stepsLeft);
+        updateScore();
+        drawScore(getGameState().score);
+        drawTime(getGameState().timeLeft);
         
         //if start is pressed, open the pause menu
         if(getStart() == 1){
@@ -72,6 +78,6 @@ int main() {
 
     //keeps terminal open for a bit
     Wait(2000000);
-
+    
     return 0;
 }
