@@ -18,6 +18,9 @@ void gameLoop(int runMenu){
     }else{
         gameloop = 0;
     }
+    if(gameloop==0){
+        startTime();
+    }
     while(gameloop == 0) {
 
         // if loss, exit loop

@@ -1,6 +1,7 @@
 #include "game.h"
 #include "object.h"
 #include <stdio.h>
+#include <pthread.h>
 
 GameState game;
 int hit;
@@ -78,7 +79,7 @@ int getFrogY() {
 }
 
 void updateScore(){
-    game.score = game.stepsLeft + game.timeLeft + game.lives * 100;
+    game.score = (game.stepsLeft + game.timeLeft + game.lives) * 10;
 }
 //move frog in given direction
 void moveFrog(int direction) {
@@ -287,3 +288,20 @@ void makeRiver(int start, int end) {
     game.rStart = start;
     game.rEnd = end;
 }
+
+void startTime(){
+    pthread_t timeCount;
+    pthread_attr_t attr1;
+    pthread_attr_init(&attr1);
+    pthread_create(&timeCount,&attr1,tickTime(),1);
+    pthread_join(timeCount,NULL);
+}
+
+void* tickTime(int tid){
+    for(int i = game.timeLeft;i> 0;i--){
+        game.timeLeft --;
+        sleep(1);
+    }
+    return;
+}
+    

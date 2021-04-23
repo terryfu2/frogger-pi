@@ -72,3 +72,7 @@ void quitGame();
 void tickGame();
 
 void makeRiver(int start, int end);
+
+void startTime();
+
+void* tickTime();
