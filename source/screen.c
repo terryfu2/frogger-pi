@@ -131,6 +131,7 @@ void drawSteps(int steps){
     }
     steps -= remainder;
     remainder = steps % 100;
+    remainder = remainder/10;
     number second = getNum(remainder);
     int *imagePtr2 = (int *) second.image_pixels;
     j = 0;

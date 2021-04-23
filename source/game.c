@@ -72,7 +72,7 @@ void moveFrog(int direction) {
         int down = 1;
         int left = 2;
         int right = 3;
-
+        game.stepsLeft --;
         if(direction == up) {
 
             if(game.objects[0].yPos != 32) {

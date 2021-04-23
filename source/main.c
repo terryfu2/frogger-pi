@@ -71,6 +71,6 @@ int main() {
 
     //keeps terminal open for a bit
     Wait(2000000);
-
+    
     return 0;
 }

@@ -21,7 +21,7 @@ void drawLives(int lives);
 
 void drawSteps(int steps);
 
-number getNumber(int num);
+number getNum(int num);
 
 int drawHalf(halfscreen screenToPrint, int paused);
 
